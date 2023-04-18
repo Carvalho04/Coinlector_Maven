@@ -1,13 +1,17 @@
 package br.edu.unifacear.classes;
 
 import java.util.Objects;
+import javax.persistence.*;
 
+@Entity
 public class TipoUsuario {
 	
 	
 	//Attributes
-	
+	@Id
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int id;
+	
 	private String tipo;
 	
 	

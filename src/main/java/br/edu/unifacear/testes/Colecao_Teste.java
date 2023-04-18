@@ -1,8 +1,10 @@
 package br.edu.unifacear.testes;
 
 import java.time.LocalDate;
+import java.util.List;
 
 import br.edu.unifacear.bo.ColecaoBo;
+import br.edu.unifacear.classes.Colecao;
 import br.edu.unifacear.classes.Colecao;
 import br.edu.unifacear.classes.EstadoConservacao;
 import br.edu.unifacear.classes.Moeda;
@@ -23,7 +25,6 @@ public class Colecao_Teste {
 		
 		Colecao colecao = new Colecao();
 		
-		colecao.setId(7);
 		colecao.setAno(LocalDate.now());
 		colecao.setColecionador(colecionador);
 		colecao.setMoeda(moeda);
@@ -31,15 +32,20 @@ public class Colecao_Teste {
 		
 		ColecaoBo colecaoBo = new ColecaoBo();
 		try {
-			colecaoBo.salvarColecao(colecao);
-			System.out.println("OK");
-		}catch (Exception e) {
+			colecaoBo.salvar(colecao);
+			System.out.println("Colecao inserido - " + colecao);
+		} catch (Exception e) {
 			System.out.println(e.getMessage());
 		}
 		
-		
-		System.out.println(colecao);
-		
+		try {
+			List <Colecao> lista = colecaoBo.consultar("A");
+			for (Colecao colecao2 : lista) {
+				System.out.println(">>>" + colecao2);
+			}
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+		}
 	}
 
 }

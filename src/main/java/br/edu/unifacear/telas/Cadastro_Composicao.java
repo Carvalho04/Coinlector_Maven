@@ -57,7 +57,7 @@ public class Cadastro_Composicao extends JFrame {
 				composicao.setDescricao(txtNome.getText());
 				ComposicaoBo composicaoBo = new ComposicaoBo();
 				try {
-				composicaoBo.salvarComposicao(composicao);
+				composicaoBo.salvar(composicao);
 				Moedas_Adm moedas = new Moedas_Adm();
 				Cadastro_Composicao.this.dispose();
 				}catch (Exception eE) {

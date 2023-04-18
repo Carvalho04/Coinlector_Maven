@@ -57,7 +57,7 @@ public class Cadastro_Forma extends JFrame {
 				forma.setDescricao(txtNome.getText());
 				FormaBo formaBo = new FormaBo();
 				try {
-				formaBo.salvarForma(forma);
+				formaBo.salvar(forma);
 				Moedas_Adm moedas = new Moedas_Adm();
 				Cadastro_Forma.this.dispose();
 				}catch (Exception eE) {

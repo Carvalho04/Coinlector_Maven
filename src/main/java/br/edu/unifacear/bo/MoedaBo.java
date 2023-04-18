@@ -3,17 +3,63 @@ package br.edu.unifacear.bo;
 import java.util.List;
 
 import br.edu.unifacear.classes.Moeda;
+import br.edu.unifacear.classes.Moeda;
+import br.edu.unifacear.dao.MoedaDao;
+import br.edu.unifacear.dao.GenericDao;
 import br.edu.unifacear.dao.MoedaDao;
 
 public class MoedaBo {
 
 	public MoedaBo() {	}
 	
-	public void salvarMoeda(Moeda moeda) throws Exception {
+	public void salvar(Moeda moeda) throws Exception {
+		validarDadosMoeda(moeda);
 
-//		if (moeda.getId() <= 0) {
-//			throw new Exception ("Id não pode ser igual ou menor a zero (0)");
-//		}
+		// Chamando a DAO Gen�rica
+		GenericDao<Moeda> dao  = new GenericDao<Moeda>();
+		try {
+			dao.salvarOuAtualizar(moeda);
+		}
+		catch (Exception e) {
+			System.out.println(e.getMessage());
+		}
+	}
+	
+	public List<Moeda> consultar() throws Exception{	
+		// Chamando a DAO Gen�rica	
+		GenericDao<Moeda> dao  = new GenericDao<Moeda>();
+		try {
+			return dao.list(Moeda.class);
+		}
+		catch (Exception e) {
+			System.out.println(e.getMessage());
+		}
+		return null;		
+	}		
+	
+	public String deletar(Moeda moeda) throws Exception {
+		
+		// Chamar a Dao do Moeda para deletar o moeda no BD
+		MoedaDao dao = new MoedaDao();
+		try {
+			return dao.deletar(moeda);
+		} catch (Exception e) {
+			throw new Exception(e.getMessage());
+		}		
+	}		
+	
+	public List<Moeda> consultar(String nomePesquisa) throws Exception{	
+		
+		MoedaDao dao = new MoedaDao();
+		try {
+			return dao.consultar(nomePesquisa);
+		} catch (Exception e) {
+			throw new Exception(e.getMessage());
+		}			
+	}	
+
+	private void validarDadosMoeda(Moeda moeda) throws Exception {
+		// Valida��o da regra de neg�cio
 		if (moeda.getNome() == "") {
 			throw new Exception ("Nome deve estar preenchido");
 		}
@@ -29,9 +75,6 @@ public class MoedaBo {
 		if (moeda.getDiametro() == 0.0) {
 			throw new Exception ("Diametro deve ser superior a zero (0.0)");
 		}
-		if (moeda.getCircunferencia() == 0.0) {
-			throw new Exception ("Circunferencia deve ser superior a zero (0.0)");
-		}
 		if (moeda.getEspessura() == 0.0) {
 			throw new Exception ("Espessura deve ser superior a zero (0.0)");
 		}
@@ -42,34 +85,5 @@ public class MoedaBo {
 			throw new Exception ("Ano deve ser superior a zero (0)");
 		}
 		
-		
-		MoedaDao moedaDao = new MoedaDao();
-		moedaDao.salvarMoeda(moeda);	
 	}
-	
-	public void selecionarMoeda(Moeda moeda) {
-		MoedaDao moedaDao = new MoedaDao();
-		moedaDao.selecionarMoeda(moeda);		
-	}
-	
-//	public void inserirMoeda(Moeda moeda) {
-//		MoedaDao moedaDao = new MoedaDao();
-//		moedaDao.inserirMoeda(moeda);	
-//	}
-	
-	public void editarMoeda(Moeda moeda) {
-		MoedaDao moedaDao = new MoedaDao();
-		moedaDao.editarMoeda(moeda);		
-	}
-	
-	public void deletarMoeda(int id) {
-		MoedaDao moedaDao = new MoedaDao();
-		moedaDao.deletarMoeda(id);	
-	}
-	
-	public List<Moeda> listarMoeda() {
-		MoedaDao moedaDao = new MoedaDao();
-		return moedaDao.listarMoeda();
-	}		
-	
 }

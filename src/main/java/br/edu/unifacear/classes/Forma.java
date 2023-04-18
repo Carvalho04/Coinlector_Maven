@@ -1,12 +1,17 @@
 package br.edu.unifacear.classes;
 
 import java.util.Objects;
+import javax.persistence.*;
 
+@Entity
 public class Forma {
 	
 	//Attributes
-	
+	@Id
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int id;
+	
+	
 	private String descricao;
 	
 	

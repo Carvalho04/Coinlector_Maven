@@ -6,84 +6,48 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.*;
 
+import javax.persistence.EntityManager;
+import javax.persistence.Query;
+
 import br.edu.unifacear.classes.Composicao;
 import br.edu.unifacear.classes.Composicao;
-import br.edu.unifacear.jdbc.Fabrica;
+import br.edu.unifacear.classes.Composicao;
+import br.edu.unifacear.dao.Fabrica;
 
 public class ComposicaoDao {
 	
 	public ComposicaoDao () {}
 		
-	public void selecionarComposicao(Composicao Composicao) throws SQLException {
-		Connection con = null;
-	
-	try {
-		con	= new Fabrica().getConnection();
-		System.out.println("Conectado ao Banco");
-		
-		String sql = "SELECT * FROM COMPOSICAO";
-		PreparedStatement pst = con.prepareStatement(sql);
-		ResultSet rs = pst.executeQuery();
-		while(rs.next()) {
-			int id = rs.getInt(1);
-			String nome = rs.getString(2);
-			System.out.println(id + " - " + nome);
+	// excluir
+	public String deletar(Composicao composicao) throws Exception {
+		try {			
+			EntityManager em = Fabrica.getEntityManager();
+			Composicao c = em.find(Composicao.class, composicao.getId());
+			em.getTransaction().begin();
+			em.remove(c);
+			em.getTransaction().commit();			
+			return "Ok";			
+		} catch(Exception e) {
+			throw new Exception("Erro gravando Composicao: "+e.getMessage());
 		}
-		rs.close();
-		pst.close();
-		System.out.println("Select OK");
-
-	}catch (SQLException e) {
-		System.out.println("Erro ao selecionar Composicao \n" + e.getMessage());
-	}
-	finally {
-		con.close();
-	}
-	
-	System.out.println("Composicao Selecionado");
-	
 	}
 
-	public void salvarComposicao(Composicao composicao) throws SQLException {
-		
-		Connection con =null;
-		try {
+	// consultar
+	public List<Composicao> consultar(String Pesquisa) throws Exception {		
+		EntityManager em = Fabrica.getEntityManager();
+				
+		Query q;
+		if (Pesquisa.equals("")) {
+			q = em.createQuery("from Composicao");			
+		}
+		else {
+			q = em.createQuery("select c from Composicao c"
+					+" where descricao like :descricao");
+			q.setParameter("descricao", "%" + Pesquisa + "%");		
+		}		
 
-			System.out.println("Conectado ao Banco");
-			con = new Fabrica().getConnection();
-			String sql = "INSERT INTO Composicao (NOME)" + "VALUES (?)";
-			PreparedStatement pst = con.prepareStatement(sql);
-			pst.setString(1, composicao.getDescricao());
-			pst.execute();
-			pst.close();
-			
-		}catch(Exception e) {
-			System.out.println("Erro ao gravar Composicao \n" + e.getMessage());
-		}
-		finally {
-			con.close();
-		}
-		
-		
-		System.out.println("Composicao Salvo");
-	}	
-		
-//		public void inserirComposicao(Composicao composicao) {
-//			System.out.println("Composicao Inserido");
-//		}
-		
-		public void editarComposicao(Composicao composicao) {
-			System.out.println("Composição Editado");		
-		}
-		
-		public void deletarComposicao(int id) {
-			System.out.println("Composição Deletado");		
-		}
-		
-		public List<Composicao> listarComposicao() {
-			System.out.println("Lista Composição");	
-			List<Composicao> lista = new ArrayList<Composicao>(); 
-			return lista;
-		}	
+		return q.getResultList();
+	}
+	
 		
 	}

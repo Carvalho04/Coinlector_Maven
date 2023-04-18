@@ -6,84 +6,75 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.*;
 
+import javax.persistence.*;
+
 import br.edu.unifacear.classes.Borda;
-import br.edu.unifacear.jdbc.Fabrica;
+import br.edu.unifacear.classes.Borda;
+import br.edu.unifacear.dao.Fabrica;
 
 public class BordaDao {
 	
 	public BordaDao() { 	}
 	
-		public void selecionarBorda(Borda Borda) throws SQLException {
-			Connection con = null;
-		
-		try {
-			con	= new Fabrica().getConnection();
-			System.out.println("Conectado ao Banco");
-			
-			String sql = "SELECT * FROM BORDA";
-			PreparedStatement pst = con.prepareStatement(sql);
-			ResultSet rs = pst.executeQuery();
-			while(rs.next()) {
-				int id = rs.getInt(1);
-				String nome = rs.getString(2);
-				System.out.println(id + " - " + nome);
-			}
-			rs.close();
-			pst.close();
-			System.out.println("Select OK");
 
-		}catch (SQLException e) {
-			System.out.println("Erro ao selecionar Borda \n" + e.getMessage());
+	// excluir
+	public String deletar(Borda borda) throws Exception {
+		try {			
+			EntityManager em = Fabrica.getEntityManager();
+			Borda b = em.find(Borda.class, borda.getId());
+			em.getTransaction().begin();
+			em.remove(b);
+			em.getTransaction().commit();			
+			return "Ok";			
+		} catch(Exception e) {
+			throw new Exception("Erro gravando Borda: "+e.getMessage());
 		}
-		finally {
-			con.close();
-		}
-		
-		System.out.println("Borda Selecionado");
-		
-		}
-	
-		public void salvarBorda(Borda borda) throws SQLException {
-			
-			Connection con =null;
-			try {
+	}
 
-				System.out.println("Conectado ao Banco");
-				con = new Fabrica().getConnection();
-				String sql = "INSERT INTO Borda (NOME)" + "VALUES (?)";
-				PreparedStatement pst = con.prepareStatement(sql);
-				pst.setString(1, borda.getDescricao());
-				pst.execute();
-				pst.close();
-				
-			}catch(Exception e) {
-				System.out.println("Erro ao gravar Borda \n" + e.getMessage());
-			}
-			finally {
-				con.close();
-			}
-			
-			
-			System.out.println("Borda Salvo");
+	// consultar
+	public List<Borda> consultar(String descricaoPesquisa) throws Exception {		
+		EntityManager em = Fabrica.getEntityManager();
+		// Apelidos(Alias)
+		//Query q = em.createQuery("from Borda");
+		//Query q = em.createQuery("from Borda b");
+		//Query q = em.createQuery("from Borda as b");
+		
+		// Campo
+		//Query q = em.createQuery("select b from Borda b");
+		//Query q = em.createQuery("select b from Borda as b");
+		//Query q = em.createQuery("select new Borda(id, descricao) from Borda as b");
+		
+		
+		// Selecionar borda com like
+		// Come�a com (SQL -> SELECT * FROM borda WHERE NOME like 'ELETRO%';)
+		//Query q = em.createQuery("select b from Borda b"
+		//		+" where descricao like :descricao");
+		//q.setParameter("descricao", "ELETRO%" );
+		
+		// Termina com (SQL -> SELECT * FROM borda WHERE NOME like '%ICOS';)
+		//Query q = em.createQuery("select b from Borda b"
+		//		+" where descricao like :descricao");
+		//q.setParameter("descricao", "%ICOS" );
+		
+		// Contem (SQL -> SELECT * FROM borda WHERE NOME like '%ARR%';)
+		//Query q = em.createQuery("select b from Borda b"
+		//		+" where descricao like :descricao");
+		//q.setParameter("descricao", "%ARR%" );
+		
+		//Query q = em.createQuery("select b from Borda b"
+		//		+" where descricao like :descricao");
+		//q.setParameter("descricao", "%" + "ARR" + "%");
+		
+		Query q;
+		if (descricaoPesquisa.equals("")) {
+			q = em.createQuery("from Borda");			
 		}
-		
-//		public void inserirBorda(Borda Borda) {
-//		System.out.println("Borda Inserido");
-//		}
-		
-		public void editarBorda(Borda Borda) {
-			System.out.println("Borda Editado");
-		}
-		
-		public void deletarBorda(int id) {
-			System.out.println("Borda Deletado");
-		}
-		
-		public List<Borda> listarBorda() {
-			System.out.println("Lista de Borda");	
-			List<Borda> lista = new ArrayList<Borda>(); 
-			return lista;
-		}
-		
-	
+		else {
+			q = em.createQuery("select b from Borda b"
+					+" where descricao like :descricao");
+			q.setParameter("descricao", "%" + descricaoPesquisa + "%");		
+		}		
+
+		return q.getResultList();
+	}
 }

@@ -2,12 +2,16 @@ package br.edu.unifacear.classes;
 
 import java.time.LocalDate;
 import java.util.Objects;
+import javax.persistence.*;
 
+@Entity
 public class Colecao {
 	
 	 //Attributes
-	
+	@Id
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	 private int id;
+	
 	 private LocalDate ano;
 	 private Usuario colecionador;
 	 private Moeda moeda;

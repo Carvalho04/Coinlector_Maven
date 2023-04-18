@@ -3,49 +3,67 @@ package br.edu.unifacear.bo;
 import java.util.List;
 
 import br.edu.unifacear.classes.Venda;
+import br.edu.unifacear.classes.Venda;
+import br.edu.unifacear.dao.VendaDao;
+import br.edu.unifacear.dao.GenericDao;
 import br.edu.unifacear.dao.VendaDao;
 
 public class VendaBo {
 	
 	public VendaBo () { 	}
 
-	public void salvarVenda(Venda venda) throws Exception {
-		
-		if (venda.getId() <= 0) {
-			throw new Exception ("Id não pode ser igual ou menor que zero(0)");
+	public void salvar(Venda venda) throws Exception {
+//		validarDadosVenda(venda);
+
+		// Chamando a DAO Gen�rica
+		GenericDao<Venda> dao  = new GenericDao<Venda>();
+		try {
+			dao.salvarOuAtualizar(venda);
 		}
-		
-		System.out.println("OK");
-		
-		VendaDao vendaDao = new VendaDao();
-		vendaDao.salvarVenda(venda);	
+		catch (Exception e) {
+			System.out.println(e.getMessage());
+		}
 	}
 	
-	public void selecionarVenda(Venda venda) {
-		VendaDao vendaDao = new VendaDao();
-		vendaDao.selecionarVenda(venda);		
-	}
-	
-//	public void inserirVenda(Venda venda) {
-//		VendaDao vendaDao = new VendaDao();
-//		vendaDao.inserirVenda(venda);	
-//	}
-	
-	public void editarVenda(Venda venda) {
-		VendaDao vendaDao = new VendaDao();
-		vendaDao.editarVenda(venda);
-	}
-	
-	public void deletarVenda(int id) {
-		VendaDao vendaDao = new VendaDao();
-		vendaDao.deletarVenda(id);
-	}
-	
-	public List<Venda> listarVenda() {
-		VendaDao vendaDao = new VendaDao();
-		return vendaDao.listarVenda();
+	public List<Venda> consultar() throws Exception{	
+		// Chamando a DAO Gen�rica	
+		GenericDao<Venda> dao  = new GenericDao<Venda>();
+		try {
+			return dao.list(Venda.class);
+		}
+		catch (Exception e) {
+			System.out.println(e.getMessage());
+		}
+		return null;		
 	}		
 	
+	public String deletar(Venda venda) throws Exception {
+		
+		// Chamar a Dao do Venda para deletar o venda no BD
+		VendaDao dao = new VendaDao();
+		try {
+			return dao.deletar(venda);
+		} catch (Exception e) {
+			throw new Exception(e.getMessage());
+		}		
+	}		
+	
+	public List<Venda> consultar(String nomePesquisa) throws Exception{	
+		
+		VendaDao dao = new VendaDao();
+		try {
+			return dao.consultar(nomePesquisa);
+		} catch (Exception e) {
+			throw new Exception(e.getMessage());
+		}			
+	}	
+
+//	private void validarDadosVenda(Venda venda) throws Exception {
+//		// Valida��o da regra de neg�cio
+//		if (venda.getDescricao().equals("")) {
+//			throw new Exception("Nome do venda n�o pode ficar em branco!");
+//		}
+		
 	
 
 }

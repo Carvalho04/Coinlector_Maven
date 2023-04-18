@@ -1,5 +1,7 @@
 package br.edu.unifacear.testes;
 
+import java.util.List;
+
 import br.edu.unifacear.bo.BordaBo;
 import br.edu.unifacear.classes.Borda;
 
@@ -7,22 +9,25 @@ public class Borda_Teste {
 
 	public static void main (String []args) {
 		
-		Borda Borda = new Borda();
+		Borda borda = new Borda();
 		
-		Borda.setId(7);
-		Borda.setDescricao("Serrilhada");
+		borda.setDescricao("Serrilhada");
 		
-		BordaBo BordaBo = new BordaBo();
+		BordaBo bordaBo = new BordaBo();
 		try {
-			BordaBo.salvarBorda(Borda);
-			System.out.println("OK");
+			bordaBo.salvar(borda);
+			System.out.println("Borda inserido - " + borda);
 		} catch (Exception e) {
 			System.out.println(e.getMessage());
 		}
 		
-		
-		
-		System.out.println(Borda);
+		try {
+			List <Borda> lista = bordaBo.consultar("A");
+			for (Borda borda2 : lista) {
+				System.out.println(">>>" + borda2);
+			}
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+		}
 	}
-	
 }

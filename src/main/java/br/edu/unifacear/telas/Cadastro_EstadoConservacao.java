@@ -57,7 +57,7 @@ public class Cadastro_EstadoConservacao extends JFrame {
 				estadoConservacao.setDescricao(txtNome.getText());
 				EstadoConservacaoBo estadoConservacaoBo = new EstadoConservacaoBo();
 				try {
-				estadoConservacaoBo.salvarEstadoConservacao(estadoConservacao);
+				estadoConservacaoBo.salvar(estadoConservacao);
 				Moedas_Adm moedas = new Moedas_Adm();
 				Cadastro_EstadoConservacao.this.dispose();
 				}catch (Exception eE) {

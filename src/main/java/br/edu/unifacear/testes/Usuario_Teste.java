@@ -1,6 +1,9 @@
 package br.edu.unifacear.testes;
 
+import java.util.List;
+
 import br.edu.unifacear.bo.UsuarioBo;
+import br.edu.unifacear.classes.Usuario;
 import br.edu.unifacear.classes.TipoUsuario;
 import br.edu.unifacear.classes.Usuario;
 
@@ -13,7 +16,6 @@ public static void main(String []args) {
 	
 		Usuario usuario = new Usuario();
 
-		usuario.setId(5);
 		usuario.setNome("Amanda");
 		usuario.setEmail("amanda@gmail.com");
 		usuario.setCpf("000.000.000-00");
@@ -23,14 +25,20 @@ public static void main(String []args) {
 		
 		UsuarioBo usuarioBo = new UsuarioBo();
 		try {
-			usuarioBo.salvarUsuario(usuario);
-			System.out.println("OK");
-		}catch (Exception e) {
+			usuarioBo.salvar(usuario);
+			System.out.println("Usuario inserido - " + usuario);
+		} catch (Exception e) {
 			System.out.println(e.getMessage());
 		}
 		
-		System.out.println(usuario);
-		
+		try {
+			List <Usuario> lista = usuarioBo.consultar("A");
+			for (Usuario usuario2 : lista) {
+				System.out.println(">>>" + usuario2);
+			}
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+		}
 	}
 	
 }

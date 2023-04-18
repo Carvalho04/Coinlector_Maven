@@ -58,7 +58,7 @@ public class Cadastro_Borda extends JFrame {
 				borda.setDescricao(txtNome.getText());
 				BordaBo bordaBo = new BordaBo();
 				try {
-				bordaBo.salvarBorda(borda);
+				bordaBo.salvar(borda);
 				Moedas_Adm moedas = new Moedas_Adm();
 				Cadastro_Borda.this.dispose();
 				}catch (Exception eE) {

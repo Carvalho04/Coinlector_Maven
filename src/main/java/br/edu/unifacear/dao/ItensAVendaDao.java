@@ -2,37 +2,46 @@ package br.edu.unifacear.dao;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import javax.persistence.EntityManager;
+import javax.persistence.Query;
+
+import br.edu.unifacear.classes.ItensAVenda;
 import br.edu.unifacear.classes.ItensAVenda;
 
 public class ItensAVendaDao {
 
 	public ItensAVendaDao () {}
 		
-		public void selecionarItensAVenda(ItensAVenda itensAVendaDao) {
-			System.out.println("Itens A Venda Selecionado");		
+	// excluir
+	public String deletar(ItensAVenda itensAVenda) throws Exception {
+		try {			
+			EntityManager em = Fabrica.getEntityManager();
+			ItensAVenda iV = em.find(ItensAVenda.class, itensAVenda.getId());
+			em.getTransaction().begin();
+			em.remove(iV);
+			em.getTransaction().commit();			
+			return "Ok";			
+		} catch(Exception e) {
+			throw new Exception("Erro gravando ItensAVenda: "+e.getMessage());
 		}
-		
-		public void salvarItensAVenda(ItensAVenda itensAVenda) {
-			System.out.println("Itens A Venda Salvo");		
-		}	
-		
-	//	public void inserirItensAVenda(ItensAVenda itensAVenda) {
-	//		System.out.println("Itens A Venda Inserido");
-	//	}
-		
-		public void editarItensAVenda(ItensAVenda itensAVenda) {
-			System.out.println("Itens A Venda Editado");		
+	}
+
+	// consultar
+	public List<ItensAVenda> consultar(String Pesquisa) throws Exception {		
+		EntityManager em = Fabrica.getEntityManager();
+				
+		Query q;
+		if (Pesquisa.equals("")) {
+			q = em.createQuery("from ItensAVenda");			
 		}
-		
-		public void deletarItensAVenda(int id) {
-			System.out.println("Itens A Venda Deletado");		
-		}
-		
-		public List<ItensAVenda> listarItensAVenda() {
-			System.out.println("Lista Itens A Venda");	
-			List<ItensAVenda> lista = new ArrayList<ItensAVenda>(); 
-			return lista;
-		}	
-		
-		
+		else {
+			q = em.createQuery("select iV from ItensAVenda iV"
+					+" where id like :id");
+			q.setParameter("id", "%" + Pesquisa + "%");		
+		}		
+
+		return q.getResultList();
+	}
+
 }

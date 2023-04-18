@@ -7,85 +7,48 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.EntityManager;
+import javax.persistence.Query;
+
 import br.edu.unifacear.classes.Forma;
 import br.edu.unifacear.classes.Forma;
-import br.edu.unifacear.jdbc.Fabrica;
+import br.edu.unifacear.classes.Forma;
+import br.edu.unifacear.dao.Fabrica;
 
 
 public class FormaDao {
 	
 	public FormaDao () {}
 	
-	public void selecionarForma(Forma Forma) throws SQLException {
-		Connection con = null;
-	
-	try {
-		con	= new Fabrica().getConnection();
-		System.out.println("Conectado ao Banco");
-		
-		String sql = "SELECT * FROM FORMA";
-		PreparedStatement pst = con.prepareStatement(sql);
-		ResultSet rs = pst.executeQuery();
-		while(rs.next()) {
-			int id = rs.getInt(1);
-			String nome = rs.getString(2);
-			System.out.println(id + " - " + nome);
+	// excluir
+	public String deletar(Forma forma) throws Exception {
+		try {			
+			EntityManager em = Fabrica.getEntityManager();
+			Forma f = em.find(Forma.class, forma.getId());
+			em.getTransaction().begin();
+			em.remove(f);
+			em.getTransaction().commit();			
+			return "Ok";			
+		} catch(Exception e) {
+			throw new Exception("Erro gravando Forma: "+e.getMessage());
 		}
-		rs.close();
-		pst.close();
-		System.out.println("Select OK");
-
-	}catch (SQLException e) {
-		System.out.println("Erro ao selecionar Forma \n" + e.getMessage());
-	}
-	finally {
-		con.close();
-	}
-	
-	System.out.println("Forma Selecionado");
-	
 	}
 
-	public void salvarForma(Forma forma) throws SQLException {
-		
-		Connection con =null;
-		try {
+	// consultar
+	public List<Forma> consultar(String Pesquisa) throws Exception {		
+		EntityManager em = Fabrica.getEntityManager();
+				
+		Query q;
+		if (Pesquisa.equals("")) {
+			q = em.createQuery("from Forma");			
+		}
+		else {
+			q = em.createQuery("select f from Forma f"
+					+" where descricao like :descricao");
+			q.setParameter("descricao", "%" + Pesquisa + "%");		
+		}		
 
-			System.out.println("Conectado ao Banco");
-			con = new Fabrica().getConnection();
-			String sql = "INSERT INTO Forma (NOME)" + "VALUES (?)";
-			PreparedStatement pst = con.prepareStatement(sql);
-			pst.setString(1, forma.getDescricao());
-			pst.execute();
-			pst.close();
-			
-		}catch(Exception e) {
-			System.out.println("Erro ao gravar Forma \n" + e.getMessage());
-		}
-		finally {
-			con.close();
-		}
-		
-		
-		System.out.println("Forma Salvo");
+		return q.getResultList();
 	}
-		
-//		public void inserirForma(Forma forma) {
-//		System.out.println("Forma Inserido");
-//	}
-		
-		public void editarForma(Forma forma) {
-			System.out.println("Forma Editado");		
-		}
-		
-		public void deletarForma(int id) {
-			System.out.println("Forma Deletado");		
-		}	
-		
-		public List<Forma> listarForma() {
-			System.out.println("Lista Forma");	
-			List<Forma> lista = new ArrayList<Forma>(); 
-			return lista;
-		}	
 
 }

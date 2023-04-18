@@ -1,6 +1,9 @@
 package br.edu.unifacear.testes;
 
+import java.util.List;
+
 import br.edu.unifacear.bo.FormaBo;
+import br.edu.unifacear.classes.Forma;
 import br.edu.unifacear.classes.Forma;
 
 public class Forma_Teste {
@@ -9,19 +12,24 @@ public class Forma_Teste {
 		
 		Forma forma = new Forma();
 		
-		forma.setId(8);
 		forma.setDescricao("Circular");
 		
 		FormaBo formaBo = new FormaBo();
 		try {
-			formaBo.salvarForma(forma);
-	System.out.println("OK");
+			formaBo.salvar(forma);
+			System.out.println("Forma inserido - " + forma);
 		} catch (Exception e) {
 			System.out.println(e.getMessage());
 		}
 		
-		System.out.println(forma);
-		
+		try {
+			List <Forma> lista = formaBo.consultar("A");
+			for (Forma forma2 : lista) {
+				System.out.println(">>>" + forma2);
+			}
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+		}
 	}
 
 }

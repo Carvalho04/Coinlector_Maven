@@ -2,12 +2,16 @@ package br.edu.unifacear.classes;
 
 import java.time.LocalDate;
 import java.util.*;
+import javax.persistence.*;
 
+@Entity
 public class Venda {
 
 	//Attributes
-	
+	@Id
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int id;
+	
 	private LocalDate data;
 	private Usuario usuarioComprador;
 	private Usuario usuarioVendedor;

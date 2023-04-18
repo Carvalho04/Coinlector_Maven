@@ -1,6 +1,8 @@
 
 package br.edu.unifacear.testes;
 
+import java.util.List;
+
 import br.edu.unifacear.bo.ComposicaoBo;
 import br.edu.unifacear.classes.Composicao;
 
@@ -12,30 +14,23 @@ public static void main (String []args) {
 		
 		System.out.println(composicao);
 
-//		composicao.setId(7);
-//		composicao.setDescricao("Cobre");
+		composicao.setDescricao("Cobre");
 		
 		ComposicaoBo composicaoBo = new ComposicaoBo();
 		try {
-			composicaoBo.salvarComposicao(composicao);
-			System.out.println("OK");
-		}catch (Exception e) {
+			composicaoBo.salvar(composicao);
+			System.out.println("Composicao inserido - " + composicao);
+		} catch (Exception e) {
 			System.out.println(e.getMessage());
 		}
 		
-
-		composicaoBo.editarComposicao(composicao = new Composicao(8,"Ouro"));
-
-		System.out.println(composicao);
-
-		
-		composicaoBo.deletarComposicao(8);
-
-		System.out.println(composicao);
-		
-		composicaoBo.listarComposicao();
-		
-		System.out.println(composicao);
+		try {
+			List <Composicao> lista = composicaoBo.consultar("A");
+			for (Composicao composicao2 : lista) {
+				System.out.println(">>>" + composicao2);
+			}
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+		}
 	}
-	
 }

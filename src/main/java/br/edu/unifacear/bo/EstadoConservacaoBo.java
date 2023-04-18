@@ -4,58 +4,69 @@ import java.sql.SQLException;
 import java.util.*;
 
 import br.edu.unifacear.classes.EstadoConservacao;
+import br.edu.unifacear.classes.EstadoConservacao;
 import br.edu.unifacear.dao.EstadoConservacaoDao;
+import br.edu.unifacear.dao.EstadoConservacaoDao;
+import br.edu.unifacear.dao.GenericDao;
 
 
 public class EstadoConservacaoBo {
 	
 public EstadoConservacaoBo() {	}
+		
+	public void salvar(EstadoConservacao estadoConservacao) throws Exception {
+		validarDadosEstadoConservacao(estadoConservacao);
 	
-	public void salvarEstadoConservacao(EstadoConservacao estadoConservacao) throws Exception {
-
-//		if (estadoConservacao.getId() <= 0) {
-//			throw new Exception ("Id não pode ser igual ou menor a zero (0)");
-//		}
-		if (estadoConservacao.getDescricao().equals("")) {
-			throw new Exception ("Descrição deve estar preenchido!");
+		// Chamando a DAO Gen�rica
+		GenericDao<EstadoConservacao> dao  = new GenericDao<EstadoConservacao>();
+		try {
+			dao.salvarOuAtualizar(estadoConservacao);
 		}
-		
-		System.out.println("Validações de Estado de Conservação - OK");
-		
-		EstadoConservacaoDao estadoConservacaoDao = new EstadoConservacaoDao();
-		estadoConservacaoDao.salvarEstadoConservacao(estadoConservacao);
+		catch (Exception e) {
+			System.out.println(e.getMessage());
+		}
 	}
 	
-		public void selecionarEstadoConservacao(EstadoConservacao estadoConservacao) {
-			EstadoConservacaoDao estadoConservacaoDao = new EstadoConservacaoDao();
-			try {
-				estadoConservacaoDao.selecionarEstadoConservacao(estadoConservacao);
-			} catch (SQLException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}		
+	public List<EstadoConservacao> consultar() throws Exception{	
+		// Chamando a DAO Gen�rica	
+		GenericDao<EstadoConservacao> dao  = new GenericDao<EstadoConservacao>();
+		try {
+			return dao.list(EstadoConservacao.class);
 		}
+		catch (Exception e) {
+			System.out.println(e.getMessage());
+		}
+		return null;		
+	}		
+	
+	public String deletar(EstadoConservacao estadoConservacao) throws Exception {
 		
-	//	public void inserirEstadoConservacao(EstadoConservacao estadoConservacao) {
-	//		EstadoConservacaoDao estadoConservacaoDao = new EstadoConservacaoDao();
-	//		estadoConservacaoDao.inserirEstadoConservacao(estadoConservacao);	
-	//	}
+		// Chamar a Dao do EstadoConservacao para deletar o estadoConservacao no BD
+		EstadoConservacaoDao dao = new EstadoConservacaoDao();
+		try {
+			return dao.deletar(estadoConservacao);
+		} catch (Exception e) {
+			throw new Exception(e.getMessage());
+		}		
+	}		
+	
+	public List<EstadoConservacao> consultar(String nomePesquisa) throws Exception{	
 		
-		public void editarEstadoConservacao(EstadoConservacao estadoConservacao) {
-			EstadoConservacaoDao estadoConservacaoDao = new EstadoConservacaoDao();
-			estadoConservacaoDao.editarEstadoConservacao(estadoConservacao);
+		EstadoConservacaoDao dao = new EstadoConservacaoDao();
+		try {
+			return dao.consultar(nomePesquisa);
+		} catch (Exception e) {
+			throw new Exception(e.getMessage());
+		}			
+	}	
+	
+	private void validarDadosEstadoConservacao(EstadoConservacao estadoConservacao) throws Exception {
+		// Valida��o da regra de neg�cio
+		if (estadoConservacao.getDescricao().equals("")) {
+			throw new Exception("Nome do estadoConservacao n�o pode ficar em branco!");
 		}
 	
-		public void deletarEstadoConservacao(int id) {
-			EstadoConservacaoDao estadoConservacaoDao = new EstadoConservacaoDao();
-			estadoConservacaoDao.deletarEstadoConservacao(id);
-		}
-	
-		public List<EstadoConservacao> listaEstadoConservacao(){
-			EstadoConservacaoDao estadoConservacaoDao = new EstadoConservacaoDao();
-			return estadoConservacaoDao.listarEstadoConservacao();
-		}
-		
+}
 }
 	
 		

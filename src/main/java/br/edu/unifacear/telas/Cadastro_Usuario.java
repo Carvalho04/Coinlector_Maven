@@ -93,7 +93,7 @@ public class Cadastro_Usuario extends JFrame {
 				usuario.setTipoUsuario(tipo);
 				UsuarioBo userBo = new UsuarioBo();
 				try {
-				userBo.salvarUsuario(usuario);
+				userBo.salvar(usuario);
 				TelaLogin login = new TelaLogin();
 				Cadastro_Usuario.this.dispose();
 				}catch (Exception eE) {

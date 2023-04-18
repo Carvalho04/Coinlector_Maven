@@ -1,6 +1,9 @@
 package br.edu.unifacear.testes;
 
+import java.util.List;
+
 import br.edu.unifacear.bo.PaisBo;
+import br.edu.unifacear.classes.Pais;
 import br.edu.unifacear.classes.Pais;
 
 public class Pais_Teste {
@@ -9,19 +12,23 @@ public class Pais_Teste {
 		
 		Pais pais = new Pais();
 		
-//		pais.setId(9);
-//		pais.setNome("Brasil");
-//		pais.setContinente("America do Sul");
+		pais.setNome("Brasil");
 
-		PaisBo paisbo = new PaisBo();
+		PaisBo paisBo = new PaisBo();
 		try {
-			paisbo.salvarPais(pais);
-			System.out.println("Ok");
-		}catch (Exception e) {
+			paisBo.salvar(pais);
+			System.out.println("Pais inserido - " + pais);
+		} catch (Exception e) {
 			System.out.println(e.getMessage());
 		}
 		
-		System.out.println(pais);
-		
+		try {
+			List <Pais> lista = paisBo.consultar("A");
+			for (Pais pais2 : lista) {
+				System.out.println(">>>" + pais2);
+			}
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+		}
 	}
 }

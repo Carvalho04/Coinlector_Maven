@@ -1,31 +1,33 @@
 package br.edu.unifacear.testes;
 
+import java.util.List;
+
 import br.edu.unifacear.bo.VendaBo;
+import br.edu.unifacear.classes.Venda;
 import br.edu.unifacear.classes.Venda;
 
 public class Venda_Teste {
 
 	
 	public static void main (String []args) {
-//		
-//		Date data = new Date();
-//		System.out.println(data.toString());
-//
 		
 	Venda venda = new Venda();
 			
-			venda.setId(9);
-			
-			VendaBo vendabo = new VendaBo();
+			VendaBo vendaBo = new VendaBo();
 			try {
-				vendabo.salvarVenda(venda);
-				System.out.println("Ok");
-			}catch (Exception e) {
+				vendaBo.salvar(venda);
+				System.out.println("Venda inserido - " + venda);
+			} catch (Exception e) {
 				System.out.println(e.getMessage());
 			}
 			
-			System.out.println(venda);
-			
-		
+			try {
+				List <Venda> lista = vendaBo.consultar("A");
+				for (Venda venda2 : lista) {
+					System.out.println(">>>" + venda2);
+				}
+			} catch (Exception e) {
+				System.out.println(e.getMessage());
+			}
 	}
 }

@@ -66,7 +66,7 @@ public class Cadastro_Pais extends JFrame {
 //				pais.setContinente(continente);
 				PaisBo paisBo = new PaisBo();
 				try {
-				paisBo.salvarPais(pais);
+				paisBo.salvar(pais);
 				Moedas_Adm moedas = new Moedas_Adm();
 				Cadastro_Pais.this.dispose();
 				}catch (Exception eE) {

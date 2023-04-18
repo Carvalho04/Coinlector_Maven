@@ -2,12 +2,16 @@ package br.edu.unifacear.classes;
 
 import java.util.List;
 import java.util.Objects;
+import javax.persistence.*;
 
+@Entity
 public class Usuario {
 
 	//Attributes
-	
+	@Id
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int id;
+
 	private String nome;
 	private String cpf;
 	private String email;

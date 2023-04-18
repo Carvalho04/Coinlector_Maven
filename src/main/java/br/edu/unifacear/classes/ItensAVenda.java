@@ -1,12 +1,16 @@
 package br.edu.unifacear.classes;
 
 import java.util.Objects;
+import javax.persistence.*;
 
+@Entity
 public class ItensAVenda {
 
 	//Attributes
-	
+	@Id
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int id;
+	
 	private int quantidade;
 	private double valor;
 	private double total;

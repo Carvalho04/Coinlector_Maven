@@ -3,36 +3,45 @@ package br.edu.unifacear.dao;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.EntityManager;
+import javax.persistence.Query;
+
+import br.edu.unifacear.classes.Moeda;
 import br.edu.unifacear.classes.Moeda;
 
 public class MoedaDao {
 
 	public MoedaDao () {}
 
-		public void selecionarMoeda(Moeda moeda) {
-			System.out.println("Moeda Selecionado");		
+	// excluir
+	public String deletar(Moeda moeda) throws Exception {
+		try {			
+			EntityManager em = Fabrica.getEntityManager();
+			Moeda m = em.find(Moeda.class, moeda.getId());
+			em.getTransaction().begin();
+			em.remove(m);
+			em.getTransaction().commit();			
+			return "Ok";			
+		} catch(Exception e) {
+			throw new Exception("Erro gravando Moeda: "+e.getMessage());
 		}
-	
-		public void salvarMoeda(Moeda moeda) {
-			System.out.println("Moeda Salvo");		
-		}	
-		
-	//	public void inserirMoeda(Moeda moeda) {
-	//		System.out.println("Moeda Inserido");
-	//	}
-		
-		public void editarMoeda(Moeda moeda) {
-			System.out.println("Moeda Editado");		
+	}
+
+	// consultar
+	public List<Moeda> consultar(String Pesquisa) throws Exception {		
+		EntityManager em = Fabrica.getEntityManager();
+				
+		Query q;
+		if (Pesquisa.equals("")) {
+			q = em.createQuery("from Moeda");			
 		}
-		
-		public void deletarMoeda(int id) {
-			System.out.println("Moeda Deletado");		
-		}
-		
-		public List<Moeda> listarMoeda() {
-			System.out.println("Lista Moeda");	
-			List<Moeda> lista = new ArrayList<Moeda>(); 
-			return lista;
-		}	
-		
+		else {
+			q = em.createQuery("select m from Moeda m"
+					+" where nome like :nome");
+			q.setParameter("nome", "%" + Pesquisa + "%");		
+		}		
+
+		return q.getResultList();
+	}
+
 }

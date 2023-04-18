@@ -3,6 +3,10 @@ package br.edu.unifacear.dao;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.EntityManager;
+import javax.persistence.Query;
+
+import br.edu.unifacear.classes.Venda;
 import br.edu.unifacear.classes.Venda;
 
 public class VendaDao {
@@ -10,30 +14,35 @@ public class VendaDao {
 	
 	public VendaDao() { 	}
 		
-		public void selecionarVenda(Venda venda) {
-			System.out.println("Venda Selecionado");		
+	// excluir
+	public String deletar(Venda venda) throws Exception {
+		try {			
+			EntityManager em = Fabrica.getEntityManager();
+			Venda v = em.find(Venda.class, venda.getId());
+			em.getTransaction().begin();
+			em.remove(v);
+			em.getTransaction().commit();			
+			return "Ok";			
+		} catch(Exception e) {
+			throw new Exception("Erro gravando Venda: "+e.getMessage());
 		}
-		
-		public void salvarVenda(Venda venda) {
-			System.out.println("Tipo Borda Salvo");
+	}
+
+	// consultar
+	public List<Venda> consultar(String Pesquisa) throws Exception {		
+		EntityManager em = Fabrica.getEntityManager();
+				
+		Query q;
+		if (Pesquisa.equals("")) {
+			q = em.createQuery("from Venda");			
 		}
-		
-//		public void inserirVenda(Venda venda) {
-//		System.out.println("Venda Inserido");
-//		}
-		
-		public void editarVenda(Venda venda) {
-			System.out.println("Tipo Borda Editado");
-		}
-		
-		public void deletarVenda(int id) {
-			System.out.println("Tipo Borda Deletado");
-		}
-		
-		public List<Venda> listarVenda() {
-			System.out.println("Lista Tipo Borda");	
-			List<Venda> lista = new ArrayList<Venda>(); 
-			return lista;
-		}	
-	
+		else {
+			q = em.createQuery("select v from Venda v"
+					+" where id like :id");
+			q.setParameter("id", "%" + Pesquisa + "%");		
+		}		
+
+		return q.getResultList();
+	}
+
 }

@@ -3,46 +3,68 @@ package br.edu.unifacear.bo;
 import java.util.List;
 
 import br.edu.unifacear.classes.Colecao;
+import br.edu.unifacear.classes.Colecao;
+import br.edu.unifacear.classes.Colecao;
 import br.edu.unifacear.dao.ColecaoDao;
+import br.edu.unifacear.dao.ColecaoDao;
+import br.edu.unifacear.dao.GenericDao;
 
 public class ColecaoBo {
 
 	
 	public ColecaoBo() {	}
 	
-	public void selecionarColecao(Colecao colecao) {
-		ColecaoDao colecaoDao = new ColecaoDao();
-		colecaoDao.selecionarColecao(colecao);		
-	}
-	
-	public void salvarColecao(Colecao colecao) throws Exception {
+	public void salvar(Colecao colecao) throws Exception {
+		validarDadosColecao(colecao);
 
-//		if (colecao.getId() <= 0) {
-//			throw new Exception ("Id não pode ser igual ou menor a zero (0)");
-//		}
-		
-		ColecaoDao colecaoDao = new ColecaoDao();
-		colecaoDao.salvarColecao(colecao);	
+		// Chamando a DAO Gen�rica
+		GenericDao<Colecao> dao  = new GenericDao<Colecao>();
+		try {
+			dao.salvarOuAtualizar(colecao);
+		}
+		catch (Exception e) {
+			System.out.println(e.getMessage());
+		}
 	}
 	
-//	public void inserirColecao(Colecao colecao) {
-//		ColecaoDao colecaoDao = new ColecaoDao();
-//		colecaoDao.inserirColecao(colecao);	
-//	}
-	
-	public void editarColecao(Colecao colecao) {
-		ColecaoDao colecaoDao = new ColecaoDao();
-		colecaoDao.editarColecao(colecao);		
-	}
-	
-	public void deletarColecao(int id) {
-		ColecaoDao colecaoDao = new ColecaoDao();
-		colecaoDao.deletarColecao(id);	
-	}
-	
-	public List<Colecao> listarColecao() {
-		ColecaoDao colecaoDao = new ColecaoDao();
-		return colecaoDao.listarColecao();
+	public List<Colecao> consultar() throws Exception{	
+		// Chamando a DAO Gen�rica	
+		GenericDao<Colecao> dao  = new GenericDao<Colecao>();
+		try {
+			return dao.list(Colecao.class);
+		}
+		catch (Exception e) {
+			System.out.println(e.getMessage());
+		}
+		return null;		
 	}		
 	
+	public String deletar(Colecao colecao) throws Exception {
+		
+		// Chamar a Dao do Colecao para deletar o colecao no BD
+		ColecaoDao dao = new ColecaoDao();
+		try {
+			return dao.deletar(colecao);
+		} catch (Exception e) {
+			throw new Exception(e.getMessage());
+		}		
+	}		
+	
+	public List<Colecao> consultar(String nomePesquisa) throws Exception{	
+		
+		ColecaoDao dao = new ColecaoDao();
+		try {
+			return dao.consultar(nomePesquisa);
+		} catch (Exception e) {
+			throw new Exception(e.getMessage());
+		}			
+	}	
+
+//	private void validarDadosColecao(Colecao colecao) throws Exception {
+//		// Valida��o da regra de neg�cio
+//		if (colecao.getDescricao().equals("")) {
+//			throw new Exception("Nome do colecao n�o pode ficar em branco!");
+//		}
+		
+	}
 }

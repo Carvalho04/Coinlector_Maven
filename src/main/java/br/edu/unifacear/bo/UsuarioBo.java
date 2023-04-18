@@ -3,17 +3,63 @@ package br.edu.unifacear.bo;
 import java.util.List;
 
 import br.edu.unifacear.classes.Usuario;
+import br.edu.unifacear.classes.Usuario;
+import br.edu.unifacear.dao.UsuarioDao;
+import br.edu.unifacear.dao.GenericDao;
 import br.edu.unifacear.dao.UsuarioDao;
 
 public class UsuarioBo {
 
 public UsuarioBo() {	}
-	
-	public void salvarUsuario(Usuario usuario) throws Exception {
 
-//		if (usuario.getId() <= 0) {
-//			throw new Exception ("Id não pode ser igual ou menor a zero (0)");
-//		}
+	public void salvar(Usuario usuario) throws Exception {
+		validarDadosUsuario(usuario);
+
+		// Chamando a DAO Gen�rica
+		GenericDao<Usuario> dao  = new GenericDao<Usuario>();
+		try {
+			dao.salvarOuAtualizar(usuario);
+		}
+		catch (Exception e) {
+			System.out.println(e.getMessage());
+		}
+	}
+	
+	public List<Usuario> consultar() throws Exception{	
+		// Chamando a DAO Gen�rica	
+		GenericDao<Usuario> dao  = new GenericDao<Usuario>();
+		try {
+			return dao.list(Usuario.class);
+		}
+		catch (Exception e) {
+			System.out.println(e.getMessage());
+		}
+		return null;		
+	}		
+	
+	public String deletar(Usuario usuario) throws Exception {
+		
+		// Chamar a Dao do Usuario para deletar o usuario no BD
+		UsuarioDao dao = new UsuarioDao();
+		try {
+			return dao.deletar(usuario);
+		} catch (Exception e) {
+			throw new Exception(e.getMessage());
+		}		
+	}		
+	
+	public List<Usuario> consultar(String nomePesquisa) throws Exception{	
+		
+		UsuarioDao dao = new UsuarioDao();
+		try {
+			return dao.consultar(nomePesquisa);
+		} catch (Exception e) {
+			throw new Exception(e.getMessage());
+		}			
+	}	
+
+	private void validarDadosUsuario(Usuario usuario) throws Exception {
+		// Valida��o da regra de neg�cio
 		if (usuario.getNome() == "") {
 			throw new Exception ("Nome deve estar preenchido");
 		}
@@ -28,36 +74,7 @@ public UsuarioBo() {	}
 		}
 		if (usuario.getSenha() == "") {
 			throw new Exception ("Senha deve estar preenchido");
-		}	
+		}
 		
-		UsuarioDao usuarioDao = new UsuarioDao();
-		usuarioDao.salvarUsuario(usuario);	
 	}
-
-	public void selecionarUsuario(Usuario usuario) {
-		UsuarioDao usuarioDao = new UsuarioDao();
-		usuarioDao.selecionarUsuario(usuario);		
-	}
-	
-//	public void inserirUsuario(Usuario usuario) {
-//		UsuarioDao usuarioDao = new UsuarioDao();
-//		usuarioDao.inserirUsuario(usuario);	
-//	}
-	
-	public void editarUsuario(Usuario usuario) {
-		UsuarioDao usuarioDao = new UsuarioDao();
-		usuarioDao.editarUsuario(usuario);		
-	}
-	
-	public void deletarUsuario(int id) {
-		UsuarioDao usuarioDao = new UsuarioDao();
-		usuarioDao.deletarUsuario(id);	
-	}
-	
-	public List<Usuario> listarUsuario() {
-		UsuarioDao usuarioDao = new UsuarioDao();
-		return usuarioDao.listarUsuario();
-	}		
-	
-	
 }

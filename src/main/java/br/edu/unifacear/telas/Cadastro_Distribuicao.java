@@ -58,7 +58,7 @@ public class Cadastro_Distribuicao extends JFrame {
 				distribuicao.setDescricao(txtNome.getText());
 				DistribuicaoBo distribuicaoBo = new DistribuicaoBo();
 				try {
-				distribuicaoBo.salvarDistribuicao(distribuicao);
+				distribuicaoBo.salvar(distribuicao);
 				Moedas_Adm moedas = new Moedas_Adm();
 				Cadastro_Distribuicao.this.dispose();
 				}catch (Exception eE) {

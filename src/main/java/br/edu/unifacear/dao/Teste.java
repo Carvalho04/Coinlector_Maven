@@ -1,4 +1,4 @@
-package br.edu.unifacear.jdbc;
+package br.edu.unifacear.dao;
 
 import java.sql.Connection;
 import java.sql.DriverManager;

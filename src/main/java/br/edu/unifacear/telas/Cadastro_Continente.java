@@ -57,7 +57,7 @@ public class Cadastro_Continente extends JFrame{
 				continente.setDescricao(txtNome.getText());
 				ContinenteBo continenteBo = new ContinenteBo();
 				try {
-				continenteBo.salvarContinente(continente);
+				continenteBo.salvar(continente);
 				Moedas_Adm moedas = new Moedas_Adm();
 				Cadastro_Continente.this.dispose();
 				}catch (Exception eE) {

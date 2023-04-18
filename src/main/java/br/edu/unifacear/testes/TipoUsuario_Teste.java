@@ -1,26 +1,34 @@
 package br.edu.unifacear.testes;
 
+import java.util.List;
+
 import br.edu.unifacear.bo.TipoUsuarioBo;
+import br.edu.unifacear.classes.TipoUsuario;
 import br.edu.unifacear.classes.TipoUsuario;
 
 public class TipoUsuario_Teste {
 
 	public static void main (String []args) {
 		
-		TipoUsuario tpUsuario = new TipoUsuario ();
+		TipoUsuario tipoUsuario = new TipoUsuario ();
 		
-		tpUsuario.setId(1);
-		tpUsuario.setTipo("Adm");
+		tipoUsuario.setTipo("teste");
 		
-		TipoUsuarioBo tpUsuarioBo = new TipoUsuarioBo();
+		TipoUsuarioBo tipoUsuarioBo = new TipoUsuarioBo();
 		try {
-			tpUsuarioBo.salvarTipoUsuario(tpUsuario);
-			System.out.println("OK");
-		}catch (Exception e) {
+			tipoUsuarioBo.salvar(tipoUsuario);
+			System.out.println("TipoUsuario inserido - " + tipoUsuario);
+		} catch (Exception e) {
 			System.out.println(e.getMessage());
 		}
 		
-		System.out.println(tpUsuario);
-		
+		try {
+			List <TipoUsuario> lista = tipoUsuarioBo.consultar("A");
+			for (TipoUsuario tipoUsuario2 : lista) {
+				System.out.println(">>>" + tipoUsuario2);
+			}
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+		}
 	}
 }

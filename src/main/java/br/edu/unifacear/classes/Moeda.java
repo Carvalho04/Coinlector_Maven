@@ -1,19 +1,22 @@
 package br.edu.unifacear.classes;
 
 import java.util.Objects;
+import javax.persistence.*;
 
+@Entity
 public class Moeda {
 	
 	
 	//Attributes
-	
+	@Id
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int id;
+	
 	private String nome;
 	private String descricao;
 	private String cunhagem;
 	private double peso;
 	private double diametro;
-	private double circunferencia;
 	private double espessura;
 	private double valor_face;
 	private int ano;
@@ -61,12 +64,6 @@ public class Moeda {
 	}
 	public void setDiametro(double diametro) {
 		this.diametro = diametro;
-	}
-	public double getCircunferencia() {
-		return circunferencia;
-	}
-	public void setCircunferencia(double circunferencia) {
-		this.circunferencia = circunferencia;
 	}
 	public double getEspessura() {
 		return espessura;
@@ -129,7 +126,7 @@ public class Moeda {
 	}
 	
 	public Moeda(int id, String nome, String descricao, String cunhagem, double peso, double diametro,
-			double circunferencia, double espessura, int valor_face, int ano, Forma forma, 
+			 double espessura, int valor_face, int ano, Forma forma, 
 			Distribuicao distribuicao, Composicao composicao, Borda tipoborda, Pais pais) {
 		
 		super();
@@ -139,7 +136,6 @@ public class Moeda {
 		this.cunhagem = cunhagem;
 		this.peso = peso;
 		this.diametro = diametro;
-		this.circunferencia = circunferencia;
 		this.espessura = espessura;
 		this.valor_face = valor_face;
 		this.ano = ano;
@@ -151,7 +147,7 @@ public class Moeda {
 	}
 	@Override
 	public int hashCode() {
-		return Objects.hash(ano, circunferencia, composicao, cunhagem, descricao, diametro, distribuicao, espessura,
+		return Objects.hash(ano, composicao, cunhagem, descricao, diametro, distribuicao, espessura,
 				forma, id, nome, pais, peso, tipoborda, valor_face);
 	}
 	
@@ -168,7 +164,6 @@ public class Moeda {
 			return false;
 		Moeda other = (Moeda) obj;
 		return Objects.equals(ano, other.ano)
-				&& Double.doubleToLongBits(circunferencia) == Double.doubleToLongBits(other.circunferencia)
 				&& Objects.equals(composicao, other.composicao) && Objects.equals(cunhagem, other.cunhagem)
 				&& Objects.equals(descricao, other.descricao)
 				&& Double.doubleToLongBits(diametro) == Double.doubleToLongBits(other.diametro)
@@ -182,11 +177,10 @@ public class Moeda {
 	@Override
 	public String toString() {
 		return "Moeda [id=" + id + ", nome=" + nome + ", descricao=" + descricao + ", cunhagem=" + cunhagem + ", peso="
-				+ peso + ", diametro=" + diametro + ", circunferencia=" + circunferencia + ", espessura=" + espessura
-				+ ", valor_face=" + valor_face + ", ano=" + ano + ", forma=" + forma.getId() + ", distribuicao=" + distribuicao.getId()
+				+ peso + ", diametro=" + diametro + ", espessura=" + espessura + ", valor_face=" + valor_face 
+				+ ", ano=" + ano + ", forma=" + forma.getId() + ", distribuicao=" + distribuicao.getId()
 				+ ", composicao=" + composicao.getId() + ", tipoborda=" + tipoborda.getId() + ", pais=" + pais.getId() + "]";
 	}
-	
 	
 
 }

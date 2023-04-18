@@ -1,6 +1,9 @@
 package br.edu.unifacear.testes;
 
+import java.util.List;
+
 import br.edu.unifacear.bo.DistribuicaoBo;
+import br.edu.unifacear.classes.Distribuicao;
 import br.edu.unifacear.classes.Distribuicao;
 
 public class Distribuicao_Teste {
@@ -9,19 +12,23 @@ public class Distribuicao_Teste {
 			
 			Distribuicao distribuicao = new Distribuicao();
 			
-			distribuicao.setId(88);
 			distribuicao.setDescricao("Casa da Moeda RJ");
 			
 			DistribuicaoBo distribuicaoBo = new DistribuicaoBo();
 			try {
-				distribuicaoBo.salvarDistribuicao(distribuicao);
-				System.out.println("OK");
-			}catch (Exception e) {
+				distribuicaoBo.salvar(distribuicao);
+				System.out.println("Distribuicao inserido - " + distribuicao);
+			} catch (Exception e) {
 				System.out.println(e.getMessage());
 			}
 			
-			
-			System.out.println(distribuicao);
-		}
-	
+			try {
+				List <Distribuicao> lista = distribuicaoBo.consultar("A");
+				for (Distribuicao distribuicao2 : lista) {
+					System.out.println(">>>" + distribuicao2);
+				}
+			} catch (Exception e) {
+				System.out.println(e.getMessage());
+			}
+	}
 }

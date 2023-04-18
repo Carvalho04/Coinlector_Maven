@@ -6,84 +6,44 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.*;
 
+import javax.persistence.*;
+
 import br.edu.unifacear.classes.Pais;
-import br.edu.unifacear.jdbc.Fabrica;
+import br.edu.unifacear.classes.Pais;
+import br.edu.unifacear.dao.Fabrica;
 
 public class PaisDao {
 
 	public PaisDao() {   }
-	
-		public void selecionarPais(Pais pais) throws SQLException {
-			Connection con = null;
-			
-			try {
-				con	= new Fabrica().getConnection();
-				System.out.println("Conectado ao Banco");
-				
-				String sql = "SELECT * FROM PAIS";
-				PreparedStatement pst = con.prepareStatement(sql);
-				ResultSet rs = pst.executeQuery();
-				while(rs.next()) {
-					int id = rs.getInt(1);
-					String nome = rs.getString(2);
-					System.out.println(id + " - " + nome);
-				}
-				rs.close();
-				pst.close();
-				System.out.println("Select OK");
-	
-			}catch (SQLException e) {
-				System.out.println("Erro ao selecionar Pais \n" + e.getMessage());
-			}
-			
-			finally {
-				con.close();
-			}
-			
-			
-			
-			System.out.println("Pais Selecionado");		
-		}
-		
-		public void salvarPais(Pais pais) throws SQLException {
-			Connection con =null;
-			try {
 
-				System.out.println("Conectado ao Banco");
-				con = new Fabrica().getConnection();
-				String sql = "INSERT INTO PAIS 	(NOME, CONTINENTE)" + "VALUES (?, ?)";
-				PreparedStatement pst = con.prepareStatement(sql);
-				pst.setString(1, pais.getNome());
-				pst.setInt(2, pais.getContinente().getId());
-				pst.execute();
-				pst.close();
+	// excluir
+	public String deletar(Pais pais) throws Exception {
+		try {			
+			EntityManager em = Fabrica.getEntityManager();
+			Pais p = em.find(Pais.class, pais.getId());
+			em.getTransaction().begin();
+			em.remove(p);
+			em.getTransaction().commit();			
+			return "Ok";			
+		} catch(Exception e) {
+			throw new Exception("Erro gravando Pais: "+e.getMessage());
+		}
+	}
+
+	// consultar
+	public List<Pais> consultar(String nomePesquisa) throws Exception {		
+		EntityManager em = Fabrica.getEntityManager();
 				
-			}catch(Exception e) {
-				System.out.println("Erro ao gravar Pais \n" + e.getMessage());
-			}
-			finally {
-				con.close();
-			}
-			
-			
-			System.out.println("Pais Salvo");
+		Query q;
+		if (nomePesquisa.equals("")) {
+			q = em.createQuery("from Pais");			
 		}
-		
-//		public void inserirPais(Pais pais) {
-//		System.out.println("Pais Inserido");
-//		}
-		
-		public void editarPais(Pais pais) {
-			System.out.println("Pais Editado");
-		}
-		
-		public void deletarPais(int id) {
-			System.out.println("Pais Deletado");
-		}
-		
-		public List <Pais> listarPais(){
-			System.out.println("Lista Pais");
-			List<Pais> lista = new ArrayList<Pais>();
-			return lista;
-		}
+		else {
+			q = em.createQuery("select g from Pais p"
+					+" where nome like :nome");
+			q.setParameter("nome", "%" + nomePesquisa + "%");		
+		}		
+
+		return q.getResultList();
+	}
 }

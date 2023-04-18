@@ -4,61 +4,67 @@ import java.sql.SQLException;
 import java.util.List;
 
 import br.edu.unifacear.classes.Composicao;
+import br.edu.unifacear.classes.Composicao;
+import br.edu.unifacear.classes.Composicao;
 import br.edu.unifacear.dao.ComposicaoDao;
+import br.edu.unifacear.dao.ComposicaoDao;
+import br.edu.unifacear.dao.GenericDao;
 
 public class ComposicaoBo {
 	
 	public ComposicaoBo() {	}
 
-	public void selecionarComposicao(Composicao composicao) {
-		ComposicaoDao composicaoDao = new ComposicaoDao();
+	public void salvar(Composicao composicao) throws Exception {
+		validarDadosComposicao(composicao);
+
+		// Chamando a DAO Gen�rica
+		GenericDao<Composicao> dao  = new GenericDao<Composicao>();
 		try {
-			composicaoDao.selecionarComposicao(composicao);
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}		
-	}
-	
-	public void salvarComposicao(Composicao composicao) throws Exception {
-
-//		if (composicao.getId() <= 0) {
-//			throw new Exception ("Id não pode ser igual ou menor a zero (0)");
-//		}
-		if (composicao.getDescricao().equals("")) {
-			throw new Exception ("Descrição deve estar preenchido!");
+			dao.salvarOuAtualizar(composicao);
 		}
-		
-
-		System.out.println("Validações de Composição - OK");
-		
-		
-		ComposicaoDao composicaoDao = new ComposicaoDao();
-		composicaoDao.salvarComposicao(composicao);	
+		catch (Exception e) {
+			System.out.println(e.getMessage());
+		}
 	}
 	
-//	public void inserirComposicao(Composicao composicao) {
-//		ComposicaoDao composicaoDao = new ComposicaoDao();
-//		composicaoDao.inserirComposicao(composicao);	
-//	}
-	
-	public void editarComposicao(Composicao composicao) {
-		ComposicaoDao composicaoDao = new ComposicaoDao();
-		composicaoDao.editarComposicao(composicao);		
-	}
-	
-	public void deletarComposicao(int id) {
-		ComposicaoDao composicaoDao = new ComposicaoDao();
-		composicaoDao.deletarComposicao(id);
-		
-	}
-	
-	public List<Composicao> listarComposicao() {
-		ComposicaoDao composicaoDao = new ComposicaoDao();
-		return composicaoDao.listarComposicao();
+	public List<Composicao> consultar() throws Exception{	
+		// Chamando a DAO Gen�rica	
+		GenericDao<Composicao> dao  = new GenericDao<Composicao>();
+		try {
+			return dao.list(Composicao.class);
+		}
+		catch (Exception e) {
+			System.out.println(e.getMessage());
+		}
+		return null;		
 	}		
 	
+	public String deletar(Composicao composicao) throws Exception {
+		
+		// Chamar a Dao do Composicao para deletar o composicao no BD
+		ComposicaoDao dao = new ComposicaoDao();
+		try {
+			return dao.deletar(composicao);
+		} catch (Exception e) {
+			throw new Exception(e.getMessage());
+		}		
+	}		
+	
+	public List<Composicao> consultar(String nomePesquisa) throws Exception{	
+		
+		ComposicaoDao dao = new ComposicaoDao();
+		try {
+			return dao.consultar(nomePesquisa);
+		} catch (Exception e) {
+			throw new Exception(e.getMessage());
+		}			
+	}	
 
-
-
+	private void validarDadosComposicao(Composicao composicao) throws Exception {
+		// Valida��o da regra de neg�cio
+		if (composicao.getDescricao().equals("")) {
+			throw new Exception("Nome do composicao n�o pode ficar em branco!");
+		}
+		
+	}
 }

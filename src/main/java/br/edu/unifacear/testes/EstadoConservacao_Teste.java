@@ -1,6 +1,9 @@
 package br.edu.unifacear.testes;
 
+import java.util.List;
+
 import br.edu.unifacear.bo.EstadoConservacaoBo;
+import br.edu.unifacear.classes.EstadoConservacao;
 import br.edu.unifacear.classes.EstadoConservacao;
 
 public class EstadoConservacao_Teste {
@@ -9,20 +12,23 @@ public class EstadoConservacao_Teste {
 			
 			EstadoConservacao estadoConservacao = new EstadoConservacao();
 			
-			estadoConservacao.setId(8);
 			estadoConservacao.setDescricao("Circular");
 			
 			EstadoConservacaoBo estadoConservacaoBo = new EstadoConservacaoBo();
 			try {
-				estadoConservacaoBo.salvarEstadoConservacao(estadoConservacao);
-		System.out.println("OK");
+				estadoConservacaoBo.salvar(estadoConservacao);
+				System.out.println("EstadoConservacao inserido - " + estadoConservacao);
 			} catch (Exception e) {
 				System.out.println(e.getMessage());
 			}
 			
-			System.out.println(estadoConservacao);
-			
-		}
-
-	
+			try {
+				List <EstadoConservacao> lista = estadoConservacaoBo.consultar("A");
+				for (EstadoConservacao estadoConservacao2 : lista) {
+					System.out.println(">>>" + estadoConservacao2);
+				}
+			} catch (Exception e) {
+				System.out.println(e.getMessage());
+			}
+	}
 }

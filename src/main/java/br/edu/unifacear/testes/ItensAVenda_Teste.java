@@ -1,6 +1,9 @@
 package br.edu.unifacear.testes;
 
+import java.util.List;
+
 import br.edu.unifacear.bo.ItensAVendaBo;
+import br.edu.unifacear.classes.ItensAVenda;
 import br.edu.unifacear.classes.Colecao;
 import br.edu.unifacear.classes.ItensAVenda;
 import br.edu.unifacear.classes.Usuario;
@@ -21,7 +24,6 @@ public class ItensAVenda_Teste {
 		
 		ItensAVenda itensAVenda = new ItensAVenda();
 		
-		itensAVenda.setId(7);
 		itensAVenda.setQuantidade(4);
 		itensAVenda.setValor(7.50);
 		itensAVenda.setTotal(5.9);
@@ -31,14 +33,20 @@ public class ItensAVenda_Teste {
 		
 		ItensAVendaBo itensAVendaBo = new ItensAVendaBo();
 		try {
-			itensAVendaBo.salvarItensAVenda(itensAVenda);
-			System.out.println("OK");
-		}catch (Exception e) {
+			itensAVendaBo.salvar(itensAVenda);
+			System.out.println("ItensAVenda inserido - " + itensAVenda);
+		} catch (Exception e) {
 			System.out.println(e.getMessage());
 		}
 		
-		System.out.println(itensAVenda);
-		
+		try {
+			List <ItensAVenda> lista = itensAVendaBo.consultar("A");
+			for (ItensAVenda itensAVenda2 : lista) {
+				System.out.println(">>>" + itensAVenda2);
+			}
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+		}
 	}
 
 }

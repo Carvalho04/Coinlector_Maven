@@ -4,53 +4,67 @@ import java.sql.SQLException;
 import java.util.List;
 
 import br.edu.unifacear.classes.Forma;
+import br.edu.unifacear.classes.Forma;
 import br.edu.unifacear.dao.FormaDao;
+import br.edu.unifacear.dao.FormaDao;
+import br.edu.unifacear.dao.GenericDao;
 
 
 public class FormaBo {
 
 	public FormaBo() {	}
 	
-	public void salvarForma(Forma forma) throws Exception {
+	public void salvar(Forma forma) throws Exception {
+		validarDadosForma(forma);
 
-//		if (forma.getId() <= 0) {
-//			throw new Exception ("Id não pode ser igual ou menor a zero (0)");
-//		}
+		// Chamando a DAO Gen�rica
+		GenericDao<Forma> dao  = new GenericDao<Forma>();
+		try {
+			dao.salvarOuAtualizar(forma);
+		}
+		catch (Exception e) {
+			System.out.println(e.getMessage());
+		}
+	}
+	
+	public List<Forma> consultar() throws Exception{	
+		// Chamando a DAO Gen�rica	
+		GenericDao<Forma> dao  = new GenericDao<Forma>();
+		try {
+			return dao.list(Forma.class);
+		}
+		catch (Exception e) {
+			System.out.println(e.getMessage());
+		}
+		return null;		
+	}		
+	
+	public String deletar(Forma forma) throws Exception {
+		
+		// Chamar a Dao do Forma para deletar o forma no BD
+		FormaDao dao = new FormaDao();
+		try {
+			return dao.deletar(forma);
+		} catch (Exception e) {
+			throw new Exception(e.getMessage());
+		}		
+	}		
+	
+	public List<Forma> consultar(String nomePesquisa) throws Exception{	
+		
+		FormaDao dao = new FormaDao();
+		try {
+			return dao.consultar(nomePesquisa);
+		} catch (Exception e) {
+			throw new Exception(e.getMessage());
+		}			
+	}	
+
+	private void validarDadosForma(Forma forma) throws Exception {
+		// Valida��o da regra de neg�cio
 		if (forma.getDescricao().equals("")) {
-			throw new Exception ("Descrição deve estar preenchido!");
+			throw new Exception("Nome do forma n�o pode ficar em branco!");
 		}
 		
-		System.out.println("Validaçẽos de Forma - OK");
-		
-		FormaDao formaDao = new FormaDao();
-		formaDao.salvarForma(forma);	
 	}
-	
-	public void selecionarForma(Forma forma) {
-		FormaDao formaDao = new FormaDao();
-		try {
-			formaDao.selecionarForma(forma);
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}		
-	}
-	
-//	public void inserirForma(Forma forma) {
-//		FormaDao formaDao = new FormaDao();
-//		formaDao.inserirForma(forma);	
-//	}
-	
-	public void editarForma(Forma forma) {
-		FormaDao formaDao = new FormaDao();
-		formaDao.editarForma(forma);		
-	}
-	public void deletarForma(int id) {
-		FormaDao formaDao = new FormaDao();
-		formaDao.deletarForma(id);	
-	}		
-	public List<Forma> listarForma() {
-		FormaDao formaDao = new FormaDao();
-		return formaDao.listarForma();
-	}	
 }

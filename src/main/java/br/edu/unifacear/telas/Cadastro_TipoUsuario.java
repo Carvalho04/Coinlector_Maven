@@ -61,7 +61,7 @@ public class Cadastro_TipoUsuario extends JFrame {
 				
 				try {
 				TipoUsuarioBo tipoUsuarioBo = new TipoUsuarioBo();
-				tipoUsuarioBo.salvarTipoUsuario(tpUser);
+				tipoUsuarioBo.salvar(tpUser);
 				ConsultarAdm_Adm consultarAdm = new ConsultarAdm_Adm();
 				Cadastro_TipoUsuario.this.dispose();
 				}catch (Exception eE) {

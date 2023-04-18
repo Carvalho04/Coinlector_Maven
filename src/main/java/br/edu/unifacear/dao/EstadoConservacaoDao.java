@@ -7,9 +7,13 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.EntityManager;
+import javax.persistence.Query;
+
 import br.edu.unifacear.classes.EstadoConservacao;
 import br.edu.unifacear.classes.EstadoConservacao;
-import br.edu.unifacear.jdbc.Fabrica;
+import br.edu.unifacear.classes.EstadoConservacao;
+import br.edu.unifacear.dao.Fabrica;
 
 
 
@@ -17,76 +21,35 @@ public class EstadoConservacaoDao {
 
 	public EstadoConservacaoDao () {}
 		
-	public void selecionarEstadoConservacao(EstadoConservacao EstadoConservacao) throws SQLException {
-		Connection con = null;
-	
-	try {
-		con	= new Fabrica().getConnection();
-		System.out.println("Conectado ao Banco");
-		
-		String sql = "SELECT * FROM ESTADOCONSERVACAO";
-		PreparedStatement pst = con.prepareStatement(sql);
-		ResultSet rs = pst.executeQuery();
-		while(rs.next()) {
-			int id = rs.getInt(1);
-			String nome = rs.getString(2);
-			System.out.println(id + " - " + nome);
+	// excluir
+	public String deletar(EstadoConservacao estadoConservacao) throws Exception {
+		try {			
+			EntityManager em = Fabrica.getEntityManager();
+			EstadoConservacao eC = em.find(EstadoConservacao.class, estadoConservacao.getId());
+			em.getTransaction().begin();
+			em.remove(eC);
+			em.getTransaction().commit();			
+			return "Ok";			
+		} catch(Exception e) {
+			throw new Exception("Erro gravando EstadoConservacao: "+e.getMessage());
 		}
-		rs.close();
-		pst.close();
-		System.out.println("Select OK");
-
-	}catch (SQLException e) {
-		System.out.println("Erro ao selecionar EstadoConservacao \n" + e.getMessage());
-	}
-	finally {
-		con.close();
-	}
-	
-	System.out.println("EstadoConservacao Selecionado");
-	
 	}
 
-	public void salvarEstadoConservacao(EstadoConservacao estadoConservacao) throws SQLException {
-		
-		Connection con =null;
-		try {
-
-			System.out.println("Conectado ao Banco");
-			con = new Fabrica().getConnection();
-			String sql = "INSERT INTO EstadoConservacao (NOME)" + "VALUES (?)";
-			PreparedStatement pst = con.prepareStatement(sql);
-			pst.setString(1, estadoConservacao.getDescricao());
-			pst.execute();
-			pst.close();
-			
-		}catch(Exception e) {
-			System.out.println("Erro ao gravar EstadoConservacao \n" + e.getMessage());
+	// consultar
+	public List<EstadoConservacao> consultar(String Pesquisa) throws Exception {		
+		EntityManager em = Fabrica.getEntityManager();
+				
+		Query q;
+		if (Pesquisa.equals("")) {
+			q = em.createQuery("from EstadoConservacao");			
 		}
-		finally {
-			con.close();
-		}
-		
-		
-		System.out.println("EstadoConservacao Salvo");
-	}
-	
-		
-//		public void inserirEstadoConservacao(EstadoConservacao estadoConservacao) {
-//			System.out.println("Estado de Conservação Inserido");
-//		}
-		
-		public void editarEstadoConservacao(EstadoConservacao estadoConservacao) {
-			System.out.println("Estado de Conservação Editado");		
-		}
-		
-		public void deletarEstadoConservacao(int id) {
-			System.out.println("Estado de Conservação Deletado");		
+		else {
+			q = em.createQuery("select eC from EstadoConservacao eC"
+					+" where descricao like :descricao");
+			q.setParameter("descricao", "%" + Pesquisa + "%");		
 		}		
-		
-		public List<EstadoConservacao> listarEstadoConservacao() {
-			System.out.println("Lista de Estado de Conservação");	
-			List<EstadoConservacao> lista = new ArrayList<EstadoConservacao>(); 
-			return lista;
-		}
+
+		return q.getResultList();
+	}
+
 }

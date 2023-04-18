@@ -2,7 +2,7 @@ package br.edu.unifacear.telas;
 
 import javax.swing.*;
 
-import br.edu.unifacear.jdbc.Fabrica;
+import br.edu.unifacear.dao.Fabrica;
 
 import java.awt.BorderLayout;
 import java.awt.Font;
@@ -111,39 +111,39 @@ public class TelaLogin extends JFrame{
 		
 	}
 	
-	
-	public boolean consultar(String login, String senha) {
-        boolean autenticado = false;
-        String sql;
-        Connection conn;
-        try {
-        	conn = new Fabrica().getConnection();
-
-            sql = "SELECT login, senha, acesso FROM Usuario WHERE login=? and senha=? ";
-            PreparedStatement ps;
-            ps = conn.prepareStatement(sql);
-            ps.setString(1, login);
-            ps.setString(2, senha);
-
-
-            ResultSet rs;
-            rs = ps.executeQuery();
-
-            if (rs.next()) {
-            	Acesso = rs.getString(acesso);
-                String log = rs.getString("login");
-                String pass = rs.getString("senha");
-                
-                autenticado = true;
-            } else {
-                ps.close();
-                return autenticado;
-            }
-        } catch (SQLException e) {
-            JOptionPane.showMessageDialog(this, e);
-        }
-        return autenticado;
-    }
+//	
+//	public boolean consultar(String login, String senha) {
+//        boolean autenticado = false;
+//        String sql;
+//        Connection conn;
+//        try {
+//        	conn = new Fabrica().getConnection();
+//
+//            sql = "SELECT login, senha, acesso FROM Usuario WHERE login=? and senha=? ";
+//            PreparedStatement ps;
+//            ps = conn.prepareStatement(sql);
+//            ps.setString(1, login);
+//            ps.setString(2, senha);
+//
+//
+//            ResultSet rs;
+//            rs = ps.executeQuery();
+//
+//            if (rs.next()) {
+//            	Acesso = rs.getString(acesso);
+//                String log = rs.getString("login");
+//                String pass = rs.getString("senha");
+//                
+//                autenticado = true;
+//            } else {
+//                ps.close();
+//                return autenticado;
+//            }
+//        } catch (SQLException e) {
+//            JOptionPane.showMessageDialog(this, e);
+//        }
+//        return autenticado;
+//    }
 	
 	
 	public static void main (String []args) {

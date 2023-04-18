@@ -2,12 +2,25 @@ package br.edu.unifacear.classes;
 
 import java.util.Objects;
 
+import javax.persistence.*;
+
+@Entity
 public class Borda {
 
 	
 	//Attributes
-	
+	@Id
+	// SQLSERVER
+	//@GeneratedValue(strategy=GenerationType.IDENTITY)
+	// MYSQL
+	@GeneratedValue(strategy=GenerationType.IDENTITY)	
+	//Firebird
+	//@SequenceGenerator( name = "SEQ", sequenceName = "SEQ_GRUPO_ID", allocationSize = 1 )
+	//@GeneratedValue( strategy = GenerationType.SEQUENCE, generator = "SEQ" )
 	private int id;
+	
+	//@Column // opcional	
+	//@Column(name = "nome_borda")  // nome da coluna no BD
 	private String descricao;
 	
 	
