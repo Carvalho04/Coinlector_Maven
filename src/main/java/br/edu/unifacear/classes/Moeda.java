@@ -4,7 +4,7 @@ import java.util.Objects;
 import javax.persistence.*;
 
 @Entity
-public class Moeda {
+public class Moeda implements EntityBase{
 	
 	
 	//Attributes

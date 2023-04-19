@@ -4,7 +4,7 @@ import java.util.Objects;
 import javax.persistence.*;
 
 @Entity
-public class ItensAVenda {
+public class ItensAVenda implements EntityBase{
 
 	//Attributes
 	@Id

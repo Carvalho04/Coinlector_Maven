@@ -4,7 +4,7 @@ import java.util.Objects;
 import javax.persistence.*;
 
 @Entity
-public class EstadoConservacao {
+public class EstadoConservacao implements EntityBase{
 
 		//Attributes
 			@Id

@@ -15,7 +15,7 @@ public class ColecaoBo {
 	public ColecaoBo() {	}
 	
 	public void salvar(Colecao colecao) throws Exception {
-		validarDadosColecao(colecao);
+	//	validarDadosColecao(colecao);
 
 		// Chamando a DAO Gen�rica
 		GenericDao<Colecao> dao  = new GenericDao<Colecao>();
@@ -66,5 +66,5 @@ public class ColecaoBo {
 //			throw new Exception("Nome do colecao n�o pode ficar em branco!");
 //		}
 		
-	}
 }
+

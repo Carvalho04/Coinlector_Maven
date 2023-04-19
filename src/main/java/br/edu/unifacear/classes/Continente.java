@@ -4,7 +4,7 @@ import java.util.Objects;
 import javax.persistence.*;
 
 @Entity
-public class Continente {
+public class Continente implements EntityBase{
 	
 	//Attributes
 		@Id

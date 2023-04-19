@@ -21,13 +21,13 @@ public class Borda_Teste {
 			System.out.println(e.getMessage());
 		}
 		
-		try {
-			List <Borda> lista = bordaBo.consultar("A");
-			for (Borda borda2 : lista) {
-				System.out.println(">>>" + borda2);
-			}
-		} catch (Exception e) {
-			System.out.println(e.getMessage());
-		}
+//		try {
+//			List <Borda> lista = bordaBo.consultar("");
+//			for (Borda borda2 : lista) {
+//				System.out.println(">>>" + borda2);
+//			}
+//		} catch (Exception e) {
+//			System.out.println(e.getMessage());
+//		}
 	}
 }

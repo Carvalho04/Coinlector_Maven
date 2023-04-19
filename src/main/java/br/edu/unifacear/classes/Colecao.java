@@ -5,7 +5,7 @@ import java.util.Objects;
 import javax.persistence.*;
 
 @Entity
-public class Colecao {
+public class Colecao implements EntityBase{
 	
 	 //Attributes
 	@Id

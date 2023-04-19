@@ -7,6 +7,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.Query;
 
 import br.edu.unifacear.classes.Colecao;
+import br.edu.unifacear.classes.Composicao;
 import br.edu.unifacear.classes.Colecao;
 
 
@@ -44,5 +45,6 @@ public class ColecaoDao {
 
 		return q.getResultList();
 	}
+	
 	
 }

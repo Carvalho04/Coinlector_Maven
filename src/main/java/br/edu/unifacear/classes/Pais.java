@@ -4,7 +4,7 @@ import java.util.Objects;
 import javax.persistence.*;
 
 @Entity
-public class Pais {
+public class Pais implements EntityBase{
 
 	//Attribute
 	@Id

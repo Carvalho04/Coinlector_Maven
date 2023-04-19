@@ -4,7 +4,7 @@ import java.util.Objects;
 import javax.persistence.*;
 
 @Entity
-public class Composicao {
+public class Composicao implements EntityBase{
 	
 	//Attributes
 	@Id

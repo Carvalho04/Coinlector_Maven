@@ -4,7 +4,7 @@ import java.util.Objects;
 import javax.persistence.*;
 
 @Entity
-public class TipoUsuario {
+public class TipoUsuario implements EntityBase{
 	
 	
 	//Attributes

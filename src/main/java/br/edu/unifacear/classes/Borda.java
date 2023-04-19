@@ -5,7 +5,7 @@ import java.util.Objects;
 import javax.persistence.*;
 
 @Entity
-public class Borda {
+public class Borda implements EntityBase{
 
 	
 	//Attributes
@@ -13,7 +13,7 @@ public class Borda {
 	// SQLSERVER
 	//@GeneratedValue(strategy=GenerationType.IDENTITY)
 	// MYSQL
-	@GeneratedValue(strategy=GenerationType.IDENTITY)	
+	@GeneratedValue(strategy=GenerationType.SEQUENCE)	
 	//Firebird
 	//@SequenceGenerator( name = "SEQ", sequenceName = "SEQ_GRUPO_ID", allocationSize = 1 )
 	//@GeneratedValue( strategy = GenerationType.SEQUENCE, generator = "SEQ" )

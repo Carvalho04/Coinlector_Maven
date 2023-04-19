@@ -5,7 +5,7 @@ import java.util.*;
 import javax.persistence.*;
 
 @Entity
-public class Venda {
+public class Venda implements EntityBase{
 
 	//Attributes
 	@Id

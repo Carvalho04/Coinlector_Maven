@@ -4,7 +4,7 @@ import java.util.Objects;
 import javax.persistence.*;
 
 @Entity
-public class Forma {
+public class Forma implements EntityBase{
 	
 	//Attributes
 	@Id
