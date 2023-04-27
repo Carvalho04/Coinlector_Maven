@@ -8,7 +8,7 @@ public class Forma implements EntityBase{
 	
 	//Attributes
 	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@GeneratedValue(strategy=GenerationType.SEQUENCE)
 	private int id;
 	
 	

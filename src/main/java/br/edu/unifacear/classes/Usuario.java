@@ -17,6 +17,8 @@ public class Usuario implements EntityBase{
 	private String email;
 	private String login;
 	private String senha;
+	
+	@OneToOne (cascade = CascadeType.ALL)
 	private TipoUsuario tipoUsuario;
 	
 	
@@ -58,6 +60,7 @@ public class Usuario implements EntityBase{
 	public void setSenha(String senha) {
 		this.senha = senha;
 	}
+	@JoinColumn(name = "id_TpUsuario")
 	public TipoUsuario getTipoUsuario() {
 		return tipoUsuario;
 	}

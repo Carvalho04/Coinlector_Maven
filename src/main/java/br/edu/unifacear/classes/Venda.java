@@ -13,7 +13,9 @@ public class Venda implements EntityBase{
 	private int id;
 	
 	private LocalDate data;
+	@OneToOne
 	private Usuario usuarioComprador;
+	@OneToOne
 	private Usuario usuarioVendedor;
 	
 	//Properties
@@ -30,12 +32,14 @@ public class Venda implements EntityBase{
 	public void setData(LocalDate data) {
 		this.data = data;
 	}
+	@JoinColumn(name = "id_UsuarioComprador")
 	public Usuario getUsuraioComprador() {
 		return usuarioComprador;
 	}
 	public void setUsuraioComprador(Usuario usuarioComprador) {
 		this.usuarioComprador = usuarioComprador;
 	}
+	@JoinColumn(name = "id_UsuarioVendedor")
 	public Usuario getUsuarioVendedor() {
 		return usuarioVendedor;
 	}

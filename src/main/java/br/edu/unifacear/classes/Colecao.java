@@ -9,12 +9,16 @@ public class Colecao implements EntityBase{
 	
 	 //Attributes
 	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@GeneratedValue(strategy=GenerationType.SEQUENCE)
 	 private int id;
 	
 	 private LocalDate ano;
+	 
+	 @OneToOne
 	 private Usuario colecionador;
+	 @ManyToOne
 	 private Moeda moeda;
+	 @OneToOne
 	 private EstadoConservacao estadoConservacao;
 	  
 	 
@@ -32,18 +36,21 @@ public class Colecao implements EntityBase{
 	public void setAno(LocalDate ano) {
 		this.ano = ano;
 	}
+	@JoinColumn(name = "codigo_Usuario")
 	public Usuario getColecionador() {
 		return colecionador;
 	}
 	public void setColecionador(Usuario colecionador) {
 		this.colecionador = colecionador;
 	}
+	@JoinColumn(name = "codigo_MOeda")
 	public Moeda getMoeda() {
 		return moeda;
 	}
 	public void setMoeda(Moeda moeda) {
 		this.moeda = moeda;
 	}
+	@JoinColumn(name = "codigo_EstadoConservacao")
 	public EstadoConservacao getEstadoConservacao() {
 		return estadoConservacao;
 	}

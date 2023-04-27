@@ -12,6 +12,7 @@ public class Pais implements EntityBase{
 	private int id;
 	
 	private String nome;
+	@ManyToOne
 	private Continente continente;
 	public int getId() {
 		return id;
@@ -28,6 +29,7 @@ public class Pais implements EntityBase{
 	public void setNome(String nome) {
 		this.nome = nome;
 	}
+	@JoinColumn(name = "codigo_Continente")
 	public Continente getContinente() {
 		return continente;
 	}

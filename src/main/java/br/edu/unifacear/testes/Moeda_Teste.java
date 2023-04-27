@@ -24,8 +24,8 @@ public class Moeda_Teste {
 		Composicao composicao = new Composicao();
 		composicao.setId(9);
 		
-		Borda tipoborda = new Borda();
-		tipoborda.setId(6);
+		Borda borda = new Borda();
+		borda.setId(6);
 		
 		Pais pais = new Pais();
 		pais.setId(5);
@@ -42,7 +42,7 @@ public class Moeda_Teste {
 		moeda.setForma(forma);
 		moeda.setDistribuicao(distribuicao);
 		moeda.setComposicao(composicao);
-		moeda.setTipoborda(tipoborda);
+		moeda.setBorda(borda);
 		moeda.setPais(pais);
 	
 	MoedaBo moedaBo = new MoedaBo();

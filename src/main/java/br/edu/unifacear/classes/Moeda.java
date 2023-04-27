@@ -20,10 +20,15 @@ public class Moeda implements EntityBase{
 	private double espessura;
 	private double valor_face;
 	private int ano;
+	@OneToOne
 	private Forma forma;
+	@OneToOne
 	private Distribuicao distribuicao;
+	@OneToOne
 	private Composicao composicao;
-	private Borda tipoborda;
+	@OneToOne
+	private Borda borda;
+	@OneToOne
 	private Pais pais;
 	
 	
@@ -83,30 +88,35 @@ public class Moeda implements EntityBase{
 	public void setAno(int ano) {
 		this.ano = ano;
 	}
+	@JoinColumn(name = "codigo_Forma")
 	public Forma getForma() {
 		return forma;
 	}
 	public void setForma(Forma forma) {
 		this.forma = forma;
 	}
+	@JoinColumn(name = "codigo_Distribuicao")
 	public Distribuicao getDistribuicao() {
 		return distribuicao;
 	}
 	public void setDistribuicao(Distribuicao distribuicao) {
 		this.distribuicao = distribuicao;
 	}
+	@JoinColumn(name = "codigo_Composicao")
 	public Composicao getComposicao() {
 		return composicao;
 	}
 	public void setComposicao(Composicao composicao) {
 		this.composicao = composicao;
 	}
-	public Borda getTipoborda() {
-		return tipoborda;
+	@JoinColumn(name = "codigo_Borda")
+	public Borda get() {
+		return borda;
 	}
-	public void setTipoborda(Borda tipoborda) {
-		this.tipoborda = tipoborda;
+	public void setBorda(Borda borda) {
+		this.borda = borda;
 	}
+	@JoinColumn(name = "codigo_Pais")
 	public Pais getPais() {
 		return pais;
 	}
@@ -121,13 +131,13 @@ public class Moeda implements EntityBase{
 		forma = new Forma();
 		distribuicao = new Distribuicao();
 		composicao = new Composicao();
-		tipoborda = new Borda();
+		borda = new Borda();
 		pais = new Pais();
 	}
 	
 	public Moeda(int id, String nome, String descricao, String cunhagem, double peso, double diametro,
 			 double espessura, int valor_face, int ano, Forma forma, 
-			Distribuicao distribuicao, Composicao composicao, Borda tipoborda, Pais pais) {
+			Distribuicao distribuicao, Composicao composicao, Borda borda, Pais pais) {
 		
 		super();
 		this.id = id;
@@ -142,13 +152,13 @@ public class Moeda implements EntityBase{
 		this.forma = forma;
 		this.distribuicao = distribuicao;
 		this.composicao = composicao;
-		this.tipoborda = tipoborda;
+		this.borda = borda;
 		this.pais = pais;
 	}
 	@Override
 	public int hashCode() {
 		return Objects.hash(ano, composicao, cunhagem, descricao, diametro, distribuicao, espessura,
-				forma, id, nome, pais, peso, tipoborda, valor_face);
+				forma, id, nome, pais, peso, borda, valor_face);
 	}
 	
 	
@@ -172,14 +182,14 @@ public class Moeda implements EntityBase{
 				&& Objects.equals(forma, other.forma) && id == other.id && Objects.equals(nome, other.nome)
 				&& Objects.equals(pais, other.pais)
 				&& Double.doubleToLongBits(peso) == Double.doubleToLongBits(other.peso)
-				&& Objects.equals(tipoborda, other.tipoborda) && valor_face == other.valor_face;
+				&& Objects.equals(borda, other.borda) && valor_face == other.valor_face;
 	}
 	@Override
 	public String toString() {
 		return "Moeda [id=" + id + ", nome=" + nome + ", descricao=" + descricao + ", cunhagem=" + cunhagem + ", peso="
 				+ peso + ", diametro=" + diametro + ", espessura=" + espessura + ", valor_face=" + valor_face 
 				+ ", ano=" + ano + ", forma=" + forma.getId() + ", distribuicao=" + distribuicao.getId()
-				+ ", composicao=" + composicao.getId() + ", tipoborda=" + tipoborda.getId() + ", pais=" + pais.getId() + "]";
+				+ ", composicao=" + composicao.getId() + ", borda=" + borda.getId() + ", pais=" + pais.getId() + "]";
 	}
 	
 

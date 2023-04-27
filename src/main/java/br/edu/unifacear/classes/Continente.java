@@ -1,5 +1,7 @@
 package br.edu.unifacear.classes;
 
+
+import java.util.List;
 import java.util.Objects;
 import javax.persistence.*;
 
@@ -8,14 +10,23 @@ public class Continente implements EntityBase{
 	
 	//Attributes
 		@Id
-		@GeneratedValue(strategy=GenerationType.IDENTITY)
+		@GeneratedValue(strategy=GenerationType.SEQUENCE)
 		private int id;
 		
 		private String descricao;
 		
+		@OneToMany (cascade = CascadeType.ALL, mappedBy = "continente")
+		@JoinColumn(name = "codigo_Continente")
+		private List<Pais> paises;
 		
 		//Properties
 		
+		public List<Pais> getPaises() {
+			return paises;
+		}
+		public void setPaises(List<Pais> paises) {
+			this.paises = paises;
+		}
 		public int getId() {
 			return id;
 		}

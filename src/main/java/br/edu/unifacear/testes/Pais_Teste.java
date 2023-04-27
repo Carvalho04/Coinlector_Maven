@@ -1,8 +1,10 @@
 package br.edu.unifacear.testes;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import br.edu.unifacear.bo.PaisBo;
+import br.edu.unifacear.classes.Continente;
 import br.edu.unifacear.classes.Pais;
 import br.edu.unifacear.classes.Pais;
 
@@ -10,9 +12,17 @@ public class Pais_Teste {
 
 	public static void main(String []args) {
 		
+		Continente continente = new Continente();
+		continente.setDescricao("América Latina");
+		
+		List <Continente> paises = new ArrayList();
+		paises.add(continente);
+		
+		
 		Pais pais = new Pais();
 		
 		pais.setNome("Brasil");
+		pais.setContinente(continente);
 
 		PaisBo paisBo = new PaisBo();
 		try {

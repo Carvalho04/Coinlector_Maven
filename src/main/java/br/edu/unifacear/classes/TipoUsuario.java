@@ -11,9 +11,10 @@ public class TipoUsuario implements EntityBase{
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int id;
-	
 	private String tipo;
-	
+//	@OneToOne (cascade = CascadeType.ALL)
+//	private Usuario usuario;
+
 	
 	//Properties
 	
