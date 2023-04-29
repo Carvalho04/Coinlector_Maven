@@ -25,61 +25,69 @@ public class Cadastro_Adm extends JFrame{
 	private JTextField txtId;
 	
 	public Cadastro_Adm() {
-		setTitle("Cadastro");
-		getContentPane().setBackground(new Color(128, 128, 0));
+		setTitle("Cadastro de Administradores");
+		getContentPane().setBackground(new Color(255, 255, 204));
 		getContentPane().setLayout(null);
 		
 		JLabel lblCadastre = new JLabel("Cadastre-se");
+		lblCadastre.setForeground(new Color(255, 204, 51));
+		lblCadastre.setBackground(new Color(255, 204, 51));
 		lblCadastre.setFont(new Font("Rockwell Condensed", Font.PLAIN, 50));
-		lblCadastre.setBounds(174, 40, 183, 61);
+		lblCadastre.setBounds(83, 40, 183, 61);
 		getContentPane().add(lblCadastre);
 		
 		JLabel lblNome = new JLabel("Nome");
-		lblNome.setBounds(43, 117, 46, 14);
+		lblNome.setFont(new Font("Sylfaen", Font.PLAIN, 13));
+		lblNome.setBounds(20, 112, 46, 30);
 		getContentPane().add(lblNome);
 		
 		JLabel lblCpf = new JLabel("CPF");
-		lblCpf.setBounds(43, 164, 46, 14);
+		lblCpf.setFont(new Font("Sylfaen", Font.PLAIN, 13));
+		lblCpf.setBounds(20, 162, 46, 25);
 		getContentPane().add(lblCpf);
 		
 		JLabel lblEmail = new JLabel("E-mail");
-		lblEmail.setBounds(43, 210, 46, 14);
+		lblEmail.setFont(new Font("Sylfaen", Font.PLAIN, 13));
+		lblEmail.setBounds(20, 207, 46, 26);
 		getContentPane().add(lblEmail);
 		
 		JLabel lblLogin = new JLabel("Login");
-		lblLogin.setBounds(286, 117, 46, 14);
+		lblLogin.setFont(new Font("Sylfaen", Font.PLAIN, 13));
+		lblLogin.setBounds(20, 254, 46, 27);
 		getContentPane().add(lblLogin);
 		
 		JLabel lblSenha = new JLabel("Senha");
-		lblSenha.setBounds(286, 164, 46, 14);
+		lblSenha.setFont(new Font("Sylfaen", Font.PLAIN, 13));
+		lblSenha.setBounds(20, 302, 46, 28);
 		getContentPane().add(lblSenha);
 		
 		txtNome = new JTextField();
-		txtNome.setBounds(83, 114, 193, 20);
+		txtNome.setBounds(61, 114, 252, 20);
 		getContentPane().add(txtNome);
 		txtNome.setColumns(10);
 		
 		txtCpf = new JTextField();
-		txtCpf.setBounds(83, 161, 193, 20);
+		txtCpf.setBounds(61, 161, 252, 20);
 		getContentPane().add(txtCpf);
 		txtCpf.setColumns(10);
 		
 		txtEmail = new JTextField();
-		txtEmail.setBounds(83, 207, 193, 20);
+		txtEmail.setBounds(61, 207, 252, 20);
 		getContentPane().add(txtEmail);
 		txtEmail.setColumns(10);
 		
 		txtLogin = new JTextField();
-		txtLogin.setBounds(331, 114, 193, 20);
+		txtLogin.setBounds(61, 254, 252, 20);
 		getContentPane().add(txtLogin);
 		txtLogin.setColumns(10);
 		
 		txtSenha = new JTextField();
 		txtSenha.setColumns(10);
-		txtSenha.setBounds(331, 161, 193, 20);
+		txtSenha.setBounds(61, 303, 252, 20);
 		getContentPane().add(txtSenha);
 		
 		JButton btnCadastrar = new JButton("Cadastrar");
+		btnCadastrar.setBackground(new Color(255, 204, 51));
 		btnCadastrar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
@@ -97,19 +105,21 @@ public class Cadastro_Adm extends JFrame{
 				
 			}
 		});
-		btnCadastrar.setBounds(225, 249, 132, 23);
+		btnCadastrar.setBounds(118, 441, 132, 23);
 		getContentPane().add(btnCadastrar);
 		
 		JLabel lblCargo = new JLabel("Cargo");
-		lblCargo.setBounds(286, 207, 46, 14);
+		lblCargo.setFont(new Font("Sylfaen", Font.PLAIN, 13));
+		lblCargo.setBounds(20, 347, 46, 30);
 		getContentPane().add(lblCargo);
 		
 		textField = new JTextField();
 		textField.setColumns(10);
-		textField.setBounds(331, 204, 193, 20);
+		textField.setBounds(61, 349, 252, 20);
 		getContentPane().add(textField);
 		
 		JButton btnVoltar = new JButton("Voltar");
+		btnVoltar.setBackground(new Color(255, 204, 51));
 		btnVoltar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 
@@ -120,21 +130,22 @@ public class Cadastro_Adm extends JFrame{
 		});
 		
 		
-		btnVoltar.setBounds(392, 249, 132, 23);
+		btnVoltar.setBounds(10, 11, 88, 23);
 		getContentPane().add(btnVoltar);
 		
 		txtId = new JTextField();
 		txtId.setEditable(false);
 		txtId.setColumns(10);
-		txtId.setBounds(83, 250, 112, 20);
+		txtId.setBounds(61, 396, 252, 20);
 		getContentPane().add(txtId);
 		
 		JLabel lblId = new JLabel("Id");
-		lblId.setBounds(43, 253, 46, 14);
+		lblId.setFont(new Font("Sylfaen", Font.PLAIN, 13));
+		lblId.setBounds(20, 397, 46, 25);
 		getContentPane().add(lblId);
 		
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		this.setSize(565, 360);
+		this.setSize(370, 530);
 		this.setResizable(false);		
 		this.setVisible(true);	
 		

@@ -21,7 +21,7 @@ public class Perfil_Adm extends JFrame{
 	private JTextField txtConfSenha;
 	public Perfil_Adm() {
 		setTitle("Meu Perfil");
-		getContentPane().setBackground(new Color(128, 128, 0));
+		getContentPane().setBackground(new Color(255, 255, 204));
 		getContentPane().setLayout(null);
 		
 		JLabel lblMeuPerfil = new JLabel("Meu Perfil");

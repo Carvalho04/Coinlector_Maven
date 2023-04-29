@@ -29,36 +29,43 @@ public class Sugestao_Usuario extends JFrame {
 		private JTextField txtCircunferencia;
 		public Sugestao_Usuario() {
 			setTitle("Sugerir Moeda");
-			getContentPane().setBackground(new Color(128, 128, 0));
+			getContentPane().setBackground(new Color(255, 255, 204));
 			getContentPane().setLayout(null);
 			
 			JLabel lblMoeda = new JLabel("Moeda");
+			lblMoeda.setForeground(new Color(255, 204, 51));
 			lblMoeda.setFont(new Font("Rockwell Condensed", Font.PLAIN, 50));
 			lblMoeda.setBounds(305, 40, 108, 96);
 			getContentPane().add(lblMoeda);
 			
 			JLabel lblNome = new JLabel("Nome");
-			lblNome.setBounds(34, 147, 46, 14);
+			lblNome.setFont(new Font("Sylfaen", Font.PLAIN, 13));
+			lblNome.setBounds(34, 147, 46, 25);
 			getContentPane().add(lblNome);
 			
 			JLabel lblCpf = new JLabel("Cunhagem");
-			lblCpf.setBounds(34, 203, 89, 14);
+			lblCpf.setFont(new Font("Sylfaen", Font.PLAIN, 13));
+			lblCpf.setBounds(34, 203, 89, 25);
 			getContentPane().add(lblCpf);
 			
 			JLabel lblAno_Lanca = new JLabel("Ano de Lançamento");
-			lblAno_Lanca.setBounds(34, 259, 108, 14);
+			lblAno_Lanca.setFont(new Font("Sylfaen", Font.PLAIN, 13));
+			lblAno_Lanca.setBounds(34, 259, 141, 25);
 			getContentPane().add(lblAno_Lanca);
 			
 			JLabel lblPeso = new JLabel("Peso");
-			lblPeso.setBounds(261, 147, 46, 14);
+			lblPeso.setFont(new Font("Sylfaen", Font.PLAIN, 13));
+			lblPeso.setBounds(261, 147, 46, 25);
 			getContentPane().add(lblPeso);
 			
 			JLabel lblDiametro = new JLabel("Diametro");
-			lblDiametro.setBounds(261, 203, 48, 14);
+			lblDiametro.setFont(new Font("Sylfaen", Font.PLAIN, 13));
+			lblDiametro.setBounds(261, 203, 89, 25);
 			getContentPane().add(lblDiametro);
 			
 			JLabel lblEspessura = new JLabel("Espessura");
-			lblEspessura.setBounds(261, 259, 61, 14);
+			lblEspessura.setFont(new Font("Sylfaen", Font.PLAIN, 13));
+			lblEspessura.setBounds(261, 259, 61, 25);
 			getContentPane().add(lblEspessura);
 			
 			txtNome = new JTextField();
@@ -92,10 +99,14 @@ public class Sugestao_Usuario extends JFrame {
 			txtEspessura.setColumns(10);
 			
 			JButton btnAdc = new JButton("Sugerir");
+			btnAdc.setBackground(new Color(255, 204, 51));
+			btnAdc.setFont(new Font("Tahoma", Font.PLAIN, 12));
 			btnAdc.setBounds(261, 460, 200, 25);
 			getContentPane().add(btnAdc);
 			
 			JButton btnVoltar = new JButton("Voltar");
+			btnVoltar.setFont(new Font("Tahoma", Font.PLAIN, 12));
+			btnVoltar.setBackground(new Color(255, 204, 51));
 			btnVoltar.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
 					
@@ -113,11 +124,13 @@ public class Sugestao_Usuario extends JFrame {
 			getContentPane().add(txtFimProd);
 			
 			JLabel lblFimProd = new JLabel("Fim de Produção");
-			lblFimProd.setBounds(34, 315, 89, 14);
+			lblFimProd.setFont(new Font("Sylfaen", Font.PLAIN, 13));
+			lblFimProd.setBounds(34, 315, 108, 25);
 			getContentPane().add(lblFimProd);
 			
 			JLabel lblCircunferencia = new JLabel("Circunferencia");
-			lblCircunferencia.setBounds(261, 315, 89, 14);
+			lblCircunferencia.setFont(new Font("Sylfaen", Font.PLAIN, 13));
+			lblCircunferencia.setBounds(261, 315, 89, 25);
 			getContentPane().add(lblCircunferencia);
 			
 			txtValorFace = new JTextField();
@@ -126,11 +139,13 @@ public class Sugestao_Usuario extends JFrame {
 			getContentPane().add(txtValorFace);
 			
 			JLabel lblValorFace = new JLabel("Valor de Face");
-			lblValorFace.setBounds(34, 376, 89, 14);
+			lblValorFace.setFont(new Font("Sylfaen", Font.PLAIN, 13));
+			lblValorFace.setBounds(34, 376, 89, 25);
 			getContentPane().add(lblValorFace);
 			
 			JLabel lblSituacao = new JLabel("Situação");
-			lblSituacao.setBounds(261, 376, 89, 14);
+			lblSituacao.setFont(new Font("Sylfaen", Font.PLAIN, 13));
+			lblSituacao.setBounds(261, 376, 89, 25);
 			getContentPane().add(lblSituacao);
 			
 //			JComboBox comboBox = new JComboBox();
@@ -142,23 +157,28 @@ public class Sugestao_Usuario extends JFrame {
 //			
 			
 			JLabel lblPais = new JLabel("Pais");
-			lblPais.setBounds(481, 147, 46, 14);
+			lblPais.setFont(new Font("Sylfaen", Font.PLAIN, 13));
+			lblPais.setBounds(481, 147, 46, 25);
 			getContentPane().add(lblPais);
 			
 			JLabel lblBorda = new JLabel("Borda");
-			lblBorda.setBounds(479, 203, 46, 14);
+			lblBorda.setFont(new Font("Sylfaen", Font.PLAIN, 13));
+			lblBorda.setBounds(479, 203, 46, 25);
 			getContentPane().add(lblBorda);
 			
 			JLabel lblForma = new JLabel("Forma");
-			lblForma.setBounds(479, 259, 46, 14);
+			lblForma.setFont(new Font("Sylfaen", Font.PLAIN, 13));
+			lblForma.setBounds(479, 259, 46, 25);
 			getContentPane().add(lblForma);
 			
 			JLabel lblDistribuicao = new JLabel("Distribuição");
-			lblDistribuicao.setBounds(479, 315, 68, 14);
+			lblDistribuicao.setFont(new Font("Sylfaen", Font.PLAIN, 13));
+			lblDistribuicao.setBounds(479, 315, 68, 25);
 			getContentPane().add(lblDistribuicao);
 			
 			JLabel lblComposicao = new JLabel("Composição");
-			lblComposicao.setBounds(479, 376, 68, 14);
+			lblComposicao.setFont(new Font("Sylfaen", Font.PLAIN, 13));
+			lblComposicao.setBounds(479, 376, 68, 25);
 			getContentPane().add(lblComposicao);
 			
 			JComboBox ComboDistribuicao = new JComboBox();

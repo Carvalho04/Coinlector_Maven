@@ -12,19 +12,20 @@ import javax.swing.JLabel;
 public class Menu_Adm extends JFrame{
 	
 	public Menu_Adm() {
-		setTitle("Menu");
-		getContentPane().setBackground(new Color(128, 128, 0));
+		setTitle("Menu Administrador");
+		getContentPane().setBackground(new Color(255, 255, 204));
 		getContentPane().setLayout(null);
 		
 		JLabel lblBemVindo = new JLabel("Bem Vindo");
-		lblBemVindo.setForeground(Color.BLACK);
+		lblBemVindo.setForeground(new Color(255, 204, 51));
 		lblBemVindo.setFont(new Font("Rockwell Condensed", Font.PLAIN, 50));
 		lblBemVindo.setBounds(162, 11, 171, 75);
 		getContentPane().add(lblBemVindo);
 		
 		JButton btnConsultaCatalogo = new JButton("Consultar Catálogo");
-		btnConsultaCatalogo.setForeground(new Color(128, 128, 0));
-		btnConsultaCatalogo.setBackground(Color.BLACK);
+		btnConsultaCatalogo.setFont(new Font("Tahoma", Font.PLAIN, 13));
+		btnConsultaCatalogo.setForeground(new Color(0, 0, 0));
+		btnConsultaCatalogo.setBackground(new Color(255, 204, 51));
 		btnConsultaCatalogo.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
@@ -37,8 +38,9 @@ public class Menu_Adm extends JFrame{
 		getContentPane().add(btnConsultaCatalogo);
 		
 		JButton btnConsultaPerfil = new JButton("Consultar Perfil");
-		btnConsultaPerfil.setForeground(new Color(128, 128, 0));
-		btnConsultaPerfil.setBackground(Color.BLACK);
+		btnConsultaPerfil.setFont(new Font("Tahoma", Font.PLAIN, 13));
+		btnConsultaPerfil.setForeground(new Color(0, 0, 0));
+		btnConsultaPerfil.setBackground(new Color(255, 204, 51));
 		btnConsultaPerfil.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
@@ -51,6 +53,7 @@ public class Menu_Adm extends JFrame{
 		getContentPane().add(btnConsultaPerfil);
 		
 		JButton btnConsultaColecionador = new JButton("Consultar Colecionadores");
+		btnConsultaColecionador.setFont(new Font("Tahoma", Font.PLAIN, 13));
 		btnConsultaColecionador.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 			
@@ -59,14 +62,15 @@ public class Menu_Adm extends JFrame{
 				
 			}
 		});
-		btnConsultaColecionador.setForeground(new Color(128, 128, 0));
-		btnConsultaColecionador.setBackground(Color.BLACK);
+		btnConsultaColecionador.setForeground(new Color(0, 0, 0));
+		btnConsultaColecionador.setBackground(new Color(255, 204, 51));
 		btnConsultaColecionador.setBounds(251, 162, 195, 54);
 		getContentPane().add(btnConsultaColecionador);
 		
 		JButton btnConsultaAdm = new JButton("Consultar Administradores");
-		btnConsultaAdm.setForeground(new Color(128, 128, 0));
-		btnConsultaAdm.setBackground(Color.BLACK);
+		btnConsultaAdm.setFont(new Font("Tahoma", Font.PLAIN, 13));
+		btnConsultaAdm.setForeground(new Color(0, 0, 0));
+		btnConsultaAdm.setBackground(new Color(255, 204, 51));
 		btnConsultaAdm.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 			

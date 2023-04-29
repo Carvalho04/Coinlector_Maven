@@ -4,6 +4,7 @@ import java.util.Objects;
 import javax.persistence.*;
 
 @Entity
+//@SequenceGenerator (name = "itensVenda_seq", sequenceName = "itensVenda_seq", initialValue = 1, allocationSize = 1)
 public class ItensAVenda implements EntityBase{
 
 	//Attributes

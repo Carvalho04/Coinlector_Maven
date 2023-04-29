@@ -16,11 +16,13 @@ public class ConsultarColecionadores_Adm extends JFrame{
 	private JTextField txtCol;
 	private JTable table;
 	public ConsultarColecionadores_Adm() {
-		setTitle("Colecionadores");
-		getContentPane().setBackground(new Color(128, 128, 0));
+		setTitle("Consultar Colecionadores");
+		getContentPane().setBackground(new Color(255, 255, 204));
 		getContentPane().setLayout(null);
 		
 		JLabel lblAdm = new JLabel("Colecionadores");
+		lblAdm.setForeground(new Color(255, 204, 51));
+		lblAdm.setBackground(new Color(255, 255, 255));
 		lblAdm.setFont(new Font("Rockwell Condensed", Font.PLAIN, 50));
 		lblAdm.setBounds(125, 11, 261, 99);
 		getContentPane().add(lblAdm);
@@ -31,11 +33,14 @@ public class ConsultarColecionadores_Adm extends JFrame{
 		txtCol.setColumns(10);
 		
 		JButton btnPesquisar = new JButton("Pesquisar");
+		btnPesquisar.setBackground(new Color(255, 204, 51));
+		btnPesquisar.setFont(new Font("Tahoma", Font.PLAIN, 12));
 		btnPesquisar.setBounds(379, 110, 100, 23);
 		getContentPane().add(btnPesquisar);
 		
 		JLabel lblNome = new JLabel("Nome:");
-		lblNome.setBounds(10, 114, 51, 14);
+		lblNome.setFont(new Font("Sylfaen", Font.PLAIN, 13));
+		lblNome.setBounds(10, 106, 68, 37);
 		getContentPane().add(lblNome);
 		
 		table = new JTable();
@@ -43,6 +48,8 @@ public class ConsultarColecionadores_Adm extends JFrame{
 		getContentPane().add(table);
 		
 		JButton btnVoltar = new JButton("Voltar");
+		btnVoltar.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		btnVoltar.setBackground(new Color(255, 204, 51));
 		btnVoltar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 			
@@ -55,6 +62,8 @@ public class ConsultarColecionadores_Adm extends JFrame{
 		getContentPane().add(btnVoltar);
 		
 		JButton btnCadastrar = new JButton("Novo");
+		btnCadastrar.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		btnCadastrar.setBackground(new Color(255, 204, 51));
 		btnCadastrar.setToolTipText("Adicionar novo colecionador");
 		btnCadastrar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {

@@ -16,12 +16,13 @@ public class Sugestao_Adm extends JFrame{
 	private JTable table;
 	public Sugestao_Adm() {
 		setTitle("Sugestões de Colecionadores");
-		getContentPane().setBackground(new Color(128, 128, 0));
+		getContentPane().setBackground(new Color(255, 255, 204));
 		getContentPane().setLayout(null);
 		
 		JLabel lblSugestao = new JLabel("Sugestões");
+		lblSugestao.setForeground(new Color(255, 204, 51));
 		lblSugestao.setFont(new Font("Rockwell Condensed", Font.PLAIN, 50));
-		lblSugestao.setBounds(177, 11, 153, 99);
+		lblSugestao.setBounds(166, 11, 153, 99);
 		getContentPane().add(lblSugestao);
 		
 		table = new JTable();
@@ -29,6 +30,9 @@ public class Sugestao_Adm extends JFrame{
 		getContentPane().add(table);
 		
 		JButton btnVoltar = new JButton("Voltar");
+		btnVoltar.setBackground(new Color(255, 204, 51));
+		btnVoltar.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		btnVoltar.setForeground(new Color(0, 0, 0));
 		btnVoltar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 			

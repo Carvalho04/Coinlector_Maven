@@ -11,18 +11,19 @@ import java.awt.event.ActionEvent;
 public class Menu_Usuario extends JFrame{
 	public Menu_Usuario() {
 		setTitle("Menu");
-		getContentPane().setBackground(new Color(128, 128, 0));
+		getContentPane().setBackground(new Color(255, 255, 204));
 		getContentPane().setLayout(null);
 		
 		JLabel lblBemVindo = new JLabel("Bem Vindo");
-		lblBemVindo.setForeground(Color.BLACK);
+		lblBemVindo.setForeground(new Color(255, 204, 51));
 		lblBemVindo.setFont(new Font("Rockwell Condensed", Font.PLAIN, 50));
 		lblBemVindo.setBounds(152, 26, 171, 102);
 		getContentPane().add(lblBemVindo);
 		
 		JButton btnConsultaCatalogo = new JButton("Consultar Catálogo");
-		btnConsultaCatalogo.setForeground(new Color(128, 128, 0));
-		btnConsultaCatalogo.setBackground(Color.BLACK);
+		btnConsultaCatalogo.setFont(new Font("Tahoma", Font.PLAIN, 13));
+		btnConsultaCatalogo.setForeground(new Color(0, 0, 0));
+		btnConsultaCatalogo.setBackground(new Color(255, 204, 51));
 		btnConsultaCatalogo.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
@@ -35,8 +36,9 @@ public class Menu_Usuario extends JFrame{
 		getContentPane().add(btnConsultaCatalogo);
 		
 		JButton btnConsultaPerfil = new JButton("Consultar Perfil");
-		btnConsultaPerfil.setForeground(new Color(128, 128, 0));
-		btnConsultaPerfil.setBackground(Color.BLACK);
+		btnConsultaPerfil.setFont(new Font("Tahoma", Font.PLAIN, 13));
+		btnConsultaPerfil.setForeground(new Color(0, 0, 0));
+		btnConsultaPerfil.setBackground(new Color(255, 204, 51));
 		btnConsultaPerfil.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				

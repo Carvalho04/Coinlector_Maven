@@ -11,81 +11,101 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
 
+import br.edu.unifacear.bo.TipoUsuarioBo;
 import br.edu.unifacear.bo.PaisBo;
 import br.edu.unifacear.bo.TipoUsuarioBo;
+import br.edu.unifacear.classes.TipoUsuario;
 import br.edu.unifacear.classes.Pais;
 import br.edu.unifacear.classes.TipoUsuario;
 
 public class Cadastro_TipoUsuario extends JFrame {
 	
-	private JTextField txtTipo;
+	private JTextField txtNome;
+	private JTextField txtId;
 	public Cadastro_TipoUsuario() {
-		setTitle("Manter Borda");
-		getContentPane().setBackground(new Color(128, 128, 0));
+		setTitle("Manter Tipo de Usuario");
+		getContentPane().setBackground(new Color(255, 255, 204));
 		getContentPane().setLayout(null);
 		
-		JLabel lblTipoUsuario = new JLabel("Tipo de Usuário");
+		JLabel lblTipoUsuario = new JLabel("Tipo de Usuario");
+		lblTipoUsuario.setForeground(new Color(255, 204, 51));
 		lblTipoUsuario.setFont(new Font("Rockwell Condensed", Font.PLAIN, 50));
-		lblTipoUsuario.setBounds(113, 25, 257, 96);
+		lblTipoUsuario.setBounds(60, 48, 257, 96);
 		getContentPane().add(lblTipoUsuario);
 		
-		JLabel lblTipo = new JLabel("Tipo");
-		lblTipo.setBounds(20, 130, 46, 14);
-		getContentPane().add(lblTipo);
+		JLabel lblNome = new JLabel("Nome");
+		lblNome.setFont(new Font("Sylfaen", Font.PLAIN, 13));
+		lblNome.setBounds(20, 130, 46, 25);
+		getContentPane().add(lblNome);
 		
-		txtTipo = new JTextField();
-		txtTipo.setBounds(20, 155, 424, 20);
-		getContentPane().add(txtTipo);
-		txtTipo.setColumns(10);
+		txtNome = new JTextField();
+		txtNome.setBounds(20, 155, 334, 20);
+		getContentPane().add(txtNome);
+		txtNome.setColumns(10);
 		
 		JButton btnVoltar = new JButton("Voltar");
+		btnVoltar.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		btnVoltar.setBackground(new Color(255, 204, 51));
 		btnVoltar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
-				ConsultarAdm_Adm consultarAdm = new ConsultarAdm_Adm();
+				Moedas_Adm moedas = new Moedas_Adm();
 				Cadastro_TipoUsuario.this.dispose();
 				
 			}
 		});
-		
 		btnVoltar.setBounds(10, 23, 83, 25);
 		getContentPane().add(btnVoltar);
 		
 		JButton btnSalvar = new JButton("Salvar");
+		btnSalvar.setBackground(new Color(255, 204, 51));
+		btnSalvar.setFont(new Font("Tahoma", Font.PLAIN, 12));
 		btnSalvar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
 				
-				TipoUsuario tpUser = new TipoUsuario();
-				tpUser.setTipo(txtTipo.getText());
-				
-				try {
+				TipoUsuario tipoUsuario = new TipoUsuario();
+				tipoUsuario.setTipo(getName());
 				TipoUsuarioBo tipoUsuarioBo = new TipoUsuarioBo();
-				tipoUsuarioBo.salvar(tpUser);
-				ConsultarAdm_Adm consultarAdm = new ConsultarAdm_Adm();
+				try {
+				tipoUsuarioBo.salvar(tipoUsuario);
+				Moedas_Adm moedas = new Moedas_Adm();
 				Cadastro_TipoUsuario.this.dispose();
 				}catch (Exception eE) {
-					System.out.println("Erro ao salvar pais \n" + eE.getMessage());
+					System.out.println("Erro ao salvar tipoUsuario \n" + eE.getMessage());
 				}
+			
 			}
 		});
-				
-				
-			
-		btnSalvar.setBounds(196, 217, 83, 25);
+		btnSalvar.setBounds(97, 275, 159, 25);
 		getContentPane().add(btnSalvar);
 		
 		JButton btnEditar = new JButton("Editar");
-		btnEditar.setBounds(20, 217, 83, 25);
+		btnEditar.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		btnEditar.setBackground(new Color(255, 204, 51));
+		btnEditar.setBounds(137, 205, 90, 25);
 		getContentPane().add(btnEditar);
 		
 		JButton btnExcluir = new JButton("Excluir");
-		btnExcluir.setBounds(361, 218, 83, 25);
+		btnExcluir.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		btnExcluir.setBackground(new Color(255, 204, 51));
+		btnExcluir.setBounds(264, 205, 90, 25);
 		getContentPane().add(btnExcluir);
+		
+		txtId = new JTextField();
+		txtId.setEditable(false);
+		txtId.setColumns(10);
+		txtId.setBounds(20, 207, 90, 20);
+		getContentPane().add(txtId);
+		
+		JLabel lblId = new JLabel("Id");
+		lblId.setFont(new Font("Sylfaen", Font.PLAIN, 13));
+		lblId.setBounds(20, 182, 46, 25);
+		getContentPane().add(lblId);
 	
 	
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		this.setSize(480, 310);
+		this.setSize(380, 390);
 		this.setResizable(false);
 		
 		
@@ -93,9 +113,11 @@ public class Cadastro_TipoUsuario extends JFrame {
 		this.setVisible(true);
 	}
 	
-	public static void main (String [ ]args) {
+	public static void main(String []agrs) {
 		
-		Cadastro_TipoUsuario TipoUser = new Cadastro_TipoUsuario();
+		Cadastro_TipoUsuario tipoUsuario = new Cadastro_TipoUsuario();
+		
 	}
+	
 	
 }

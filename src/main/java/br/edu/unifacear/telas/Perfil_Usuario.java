@@ -21,36 +21,43 @@ public class Perfil_Usuario extends JFrame{
 	private JTextField txtConfSenha;
 	public Perfil_Usuario() {
 		setTitle("Meu Perfil");
-		getContentPane().setBackground(new Color(128, 128, 0));
+		getContentPane().setBackground(new Color(255, 255, 204));
 		getContentPane().setLayout(null);
 		
 		JLabel lblMeuPerfil = new JLabel("Meu Perfil");
+		lblMeuPerfil.setForeground(new Color(255, 204, 51));
 		lblMeuPerfil.setFont(new Font("Rockwell Condensed", Font.PLAIN, 50));
 		lblMeuPerfil.setBounds(157, 31, 169, 96);
 		getContentPane().add(lblMeuPerfil);
 		
 		JLabel lblNome = new JLabel("Nome");
-		lblNome.setBounds(34, 147, 46, 14);
+		lblNome.setFont(new Font("Sylfaen", Font.PLAIN, 13));
+		lblNome.setBounds(34, 147, 46, 30);
 		getContentPane().add(lblNome);
 		
 		JLabel lblCpf = new JLabel("CPF");
-		lblCpf.setBounds(34, 228, 46, 14);
+		lblCpf.setFont(new Font("Sylfaen", Font.PLAIN, 13));
+		lblCpf.setBounds(34, 228, 46, 30);
 		getContentPane().add(lblCpf);
 		
 		JLabel lblEmail = new JLabel("E-mail");
-		lblEmail.setBounds(34, 308, 46, 14);
+		lblEmail.setFont(new Font("Sylfaen", Font.PLAIN, 13));
+		lblEmail.setBounds(34, 308, 46, 30);
 		getContentPane().add(lblEmail);
 		
 		JLabel lblLogin = new JLabel("Login");
-		lblLogin.setBounds(261, 147, 46, 14);
+		lblLogin.setFont(new Font("Sylfaen", Font.PLAIN, 13));
+		lblLogin.setBounds(261, 147, 46, 31);
 		getContentPane().add(lblLogin);
 		
 		JLabel lblSenha = new JLabel("Senha");
-		lblSenha.setBounds(261, 228, 46, 14);
+		lblSenha.setFont(new Font("Sylfaen", Font.PLAIN, 13));
+		lblSenha.setBounds(261, 228, 46, 30);
 		getContentPane().add(lblSenha);
 		
 		JLabel lblPix = new JLabel("Chave Pix");
-		lblPix.setBounds(261, 308, 48, 14);
+		lblPix.setFont(new Font("Sylfaen", Font.PLAIN, 13));
+		lblPix.setBounds(261, 308, 65, 30);
 		getContentPane().add(lblPix);
 		
 		txtNome = new JTextField();
@@ -84,14 +91,20 @@ public class Perfil_Usuario extends JFrame{
 		txtConfSenha.setColumns(10);
 		
 		JButton btnEditar = new JButton("Editar");
+		btnEditar.setBackground(new Color(255, 204, 51));
+		btnEditar.setFont(new Font("Tahoma", Font.PLAIN, 12));
 		btnEditar.setBounds(75, 400, 89, 23);
 		getContentPane().add(btnEditar);
 		
 		JButton btnExcluir = new JButton("Excluir");
+		btnExcluir.setBackground(new Color(255, 204, 51));
+		btnExcluir.setFont(new Font("Tahoma", Font.PLAIN, 12));
 		btnExcluir.setBounds(309, 400, 89, 23);
 		getContentPane().add(btnExcluir);
 		
 		JButton btnVoltar = new JButton("Voltar");
+		btnVoltar.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		btnVoltar.setBackground(new Color(255, 204, 51));
 		btnVoltar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
@@ -113,13 +126,13 @@ public class Perfil_Usuario extends JFrame{
 		setJMenuBar(menuBar);
 		
 		final JMenuItem ItemVendas = new JMenuItem("Meus Itens A Venda");
-		ItemVendas.setBackground(Color.LIGHT_GRAY);
+		ItemVendas.setBackground(new Color(255, 255, 153));
 		ItemVendas.addMouseListener(new MouseAdapter(){
 			public void mouseEntered(MouseEvent e) {
 				ItemVendas.setBackground(Color.white);
 			}
 			public void mouseExited (MouseEvent e) {
-				ItemVendas.setBackground(Color.LIGHT_GRAY);
+				ItemVendas.setBackground(new Color(255, 255, 153));
 			}
 			public void mousePressed(MouseEvent e) {
 
@@ -134,13 +147,13 @@ public class Perfil_Usuario extends JFrame{
 		
 		
 		final JMenuItem ItemMinhaColecao = new JMenuItem("Minha Coleção");
-		ItemMinhaColecao.setBackground(Color.LIGHT_GRAY);
+		ItemMinhaColecao.setBackground(new Color(255, 255, 153));
 		ItemMinhaColecao.addMouseListener(new MouseAdapter(){
 		public void mouseEntered(MouseEvent e) {
 			ItemMinhaColecao.setBackground(Color.white);
 		}
 		public void mouseExited (MouseEvent e) {
-			ItemMinhaColecao.setBackground(Color.LIGHT_GRAY);
+			ItemMinhaColecao.setBackground(new Color(255, 255, 153));
 		}
 		public void mousePressed(MouseEvent e) {
 			
@@ -155,13 +168,13 @@ public class Perfil_Usuario extends JFrame{
 		
 		
 		final JMenuItem ItemMinhasCompras = new JMenuItem("Minhas Compras");
-		ItemMinhasCompras.setBackground(Color.LIGHT_GRAY);
+		ItemMinhasCompras.setBackground(new Color(255, 255, 153));
 		ItemMinhasCompras.addMouseListener(new MouseAdapter(){
 		public void mouseEntered(MouseEvent e) {
 			ItemMinhasCompras.setBackground(Color.white);
 		}
 		public void mouseExited (MouseEvent e) {
-			ItemMinhasCompras.setBackground(Color.LIGHT_GRAY);
+			ItemMinhasCompras.setBackground(new Color(255, 255, 153));
 		}
 		public void mousePressed(MouseEvent e) {
 			

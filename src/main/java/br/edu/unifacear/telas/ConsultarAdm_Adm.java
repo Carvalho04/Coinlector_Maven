@@ -17,11 +17,12 @@ public class ConsultarAdm_Adm extends JFrame{
 	private JTextField txtAdm;
 	private JTable table;
 	public ConsultarAdm_Adm() {
-		setTitle("Administradores");
-		getContentPane().setBackground(new Color(128, 128, 0));
+		setTitle("Consultar Administradores");
+		getContentPane().setBackground(new Color(255, 255, 204));
 		getContentPane().setLayout(null);
 		
 		JLabel lblAdm = new JLabel("Administradores");
+		lblAdm.setForeground(new Color(255, 204, 51));
 		lblAdm.setFont(new Font("Rockwell Condensed", Font.PLAIN, 50));
 		lblAdm.setBounds(125, 11, 261, 99);
 		getContentPane().add(lblAdm);
@@ -32,11 +33,14 @@ public class ConsultarAdm_Adm extends JFrame{
 		txtAdm.setColumns(10);
 		
 		JButton btnPesquisar = new JButton("Pesquisar");
+		btnPesquisar.setBackground(new Color(255, 204, 51));
+		btnPesquisar.setFont(new Font("Tahoma", Font.PLAIN, 12));
 		btnPesquisar.setBounds(379, 110, 100, 23);
 		getContentPane().add(btnPesquisar);
 		
 		JLabel lblNome = new JLabel("Nome:");
-		lblNome.setBounds(10, 114, 51, 14);
+		lblNome.setFont(new Font("Sylfaen", Font.PLAIN, 13));
+		lblNome.setBounds(10, 102, 71, 44);
 		getContentPane().add(lblNome);
 		
 		table = new JTable();
@@ -44,6 +48,8 @@ public class ConsultarAdm_Adm extends JFrame{
 		getContentPane().add(table);
 		
 		JButton btnVoltar = new JButton("Voltar");
+		btnVoltar.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		btnVoltar.setBackground(new Color(255, 204, 51));
 		btnVoltar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 			
@@ -56,6 +62,8 @@ public class ConsultarAdm_Adm extends JFrame{
 		getContentPane().add(btnVoltar);
 		
 		JButton btnCadastrar = new JButton("Novo");
+		btnCadastrar.setBackground(new Color(255, 204, 51));
+		btnCadastrar.setFont(new Font("Tahoma", Font.PLAIN, 12));
 		btnCadastrar.setToolTipText("Adicionar novo administrador");
 		btnCadastrar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -65,10 +73,12 @@ public class ConsultarAdm_Adm extends JFrame{
 				
 			}
 		});
-		btnCadastrar.setBounds(396, 11, 89, 23);
+		btnCadastrar.setBounds(199, 11, 89, 23);
 		getContentPane().add(btnCadastrar);
 		
 		JButton btnTipoUsu = new JButton("Novo Tipo de Usuário");
+		btnTipoUsu.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		btnTipoUsu.setBackground(new Color(255, 204, 51));
 		btnTipoUsu.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				

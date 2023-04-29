@@ -11,7 +11,7 @@ public class Venda implements EntityBase{
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int id;
-	
+	@Temporal(TemporalType.TIMESTAMP)
 	private LocalDate data;
 	@OneToOne
 	private Usuario usuarioComprador;

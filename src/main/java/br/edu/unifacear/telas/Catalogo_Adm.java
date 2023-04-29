@@ -14,29 +14,33 @@ import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 
 public class Catalogo_Adm extends JFrame{
-	private JTextField txtCompras;
+	private JTextField txtMoeda;
 	private JTable table;
 	public Catalogo_Adm() {
-		setTitle("Catálogo");
-		getContentPane().setBackground(new Color(128, 128, 0));
+		setTitle("Catálogo Adm");
+		getContentPane().setBackground(new Color(255, 255, 204));
 		getContentPane().setLayout(null);
 		
 		JLabel lblCatalogo = new JLabel("Catálogo");
+		lblCatalogo.setForeground(new Color(255, 204, 51));
 		lblCatalogo.setFont(new Font("Rockwell Condensed", Font.PLAIN, 50));
 		lblCatalogo.setBounds(178, 32, 134, 77);
 		getContentPane().add(lblCatalogo);
 		
-		txtCompras = new JTextField();
-		txtCompras.setBounds(57, 111, 312, 20);
-		getContentPane().add(txtCompras);
-		txtCompras.setColumns(10);
+		txtMoeda = new JTextField();
+		txtMoeda.setBounds(57, 111, 312, 20);
+		getContentPane().add(txtMoeda);
+		txtMoeda.setColumns(10);
 		
 		JButton btnPesquisar = new JButton("Pesquisar");
+		btnPesquisar.setBackground(new Color(255, 204, 51));
+		btnPesquisar.setFont(new Font("Tahoma", Font.PLAIN, 12));
 		btnPesquisar.setBounds(379, 110, 100, 23);
 		getContentPane().add(btnPesquisar);
 		
 		JLabel lblMoedas = new JLabel("Moedas");
-		lblMoedas.setBounds(10, 114, 51, 14);
+		lblMoedas.setFont(new Font("Sylfaen", Font.PLAIN, 13));
+		lblMoedas.setBounds(10, 108, 51, 32);
 		getContentPane().add(lblMoedas);
 		
 		table = new JTable();
@@ -44,6 +48,8 @@ public class Catalogo_Adm extends JFrame{
 		getContentPane().add(table);
 		
 		JButton btnVoltar = new JButton("Voltar");
+		btnVoltar.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		btnVoltar.setBackground(new Color(255, 204, 51));
 		btnVoltar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 			
@@ -56,6 +62,9 @@ public class Catalogo_Adm extends JFrame{
 		getContentPane().add(btnVoltar);
 		
 		JButton btnSugestão = new JButton("?");
+		btnSugestão.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		btnSugestão.setBackground(new Color(255, 204, 51));
+		btnSugestão.setForeground(new Color(0, 0, 0));
 		btnSugestão.setToolTipText("Consultar sugestões de moedas");
 		btnSugestão.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -65,10 +74,12 @@ public class Catalogo_Adm extends JFrame{
 				
 			}
 		});
-		btnSugestão.setBounds(428, 11, 51, 23);
+		btnSugestão.setBounds(274, 528, 156, 23);
 		getContentPane().add(btnSugestão);
 		
-		JButton btnMoedas = new JButton("Moedas");
+		JButton btnMoedas = new JButton("Manter Moedas");
+		btnMoedas.setBackground(new Color(255, 204, 51));
+		btnMoedas.setFont(new Font("Tahoma", Font.PLAIN, 12));
 		btnMoedas.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
@@ -77,12 +88,29 @@ public class Catalogo_Adm extends JFrame{
 				
 			}
 		});
-		btnMoedas.setBounds(203, 11, 89, 23);
+		btnMoedas.setBounds(57, 528, 188, 23);
 		getContentPane().add(btnMoedas);
+		
+		JButton btnItensavenda = new JButton("Itens A Venda");
+		btnItensavenda.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				CatalogoVenda_Adm CatalogoVenda = new CatalogoVenda_Adm();
+				Catalogo_Adm.this.dispose();
+				
+				
+			}
+		});
+		btnItensavenda.setToolTipText("Consultar sugestões de moedas");
+		btnItensavenda.setForeground(Color.BLACK);
+		btnItensavenda.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		btnItensavenda.setBackground(new Color(255, 204, 51));
+		btnItensavenda.setBounds(178, 12, 134, 23);
+		getContentPane().add(btnItensavenda);
 	
 		
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		this.setSize(505, 555);
+		this.setSize(505, 601);
 		this.setResizable(false);
 		this.setVisible(true);
 	}

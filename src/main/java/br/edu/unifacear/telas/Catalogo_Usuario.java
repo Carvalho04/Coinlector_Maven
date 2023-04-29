@@ -11,22 +11,25 @@ import java.awt.Font;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.JComboBox;
+import javax.swing.ImageIcon;
 
 public class Catalogo_Usuario extends JFrame{
 	private JTable table;
-	private JTextField txtAno;
 	private JTextField textField;
 	public Catalogo_Usuario() {
-		setTitle("Catálogo");
-		getContentPane().setBackground(new Color(128, 128, 0));
+		setTitle("Catálogo Colecionadores");
+		getContentPane().setBackground(new Color(255, 255, 204));
 		getContentPane().setLayout(null);
 		
 		JLabel lblCatalogo = new JLabel("Catálogo");
+		lblCatalogo.setForeground(new Color(255, 204, 51));
 		lblCatalogo.setFont(new Font("Rockwell Condensed", Font.PLAIN, 50));
-		lblCatalogo.setBounds(183, 11, 134, 99);
+		lblCatalogo.setBounds(183, 27, 134, 99);
 		getContentPane().add(lblCatalogo);
 		
 		JButton btnPesquisar = new JButton("Pesquisar");
+		btnPesquisar.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		btnPesquisar.setBackground(new Color(255, 204, 51));
 		btnPesquisar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
@@ -34,7 +37,7 @@ public class Catalogo_Usuario extends JFrame{
 				
 			}
 		});
-		btnPesquisar.setBounds(183, 493, 134, 23);
+		btnPesquisar.setBounds(88, 481, 134, 23);
 		getContentPane().add(btnPesquisar);
 		
 		table = new JTable();
@@ -42,6 +45,8 @@ public class Catalogo_Usuario extends JFrame{
 		getContentPane().add(table);
 		
 		JButton btnVoltar = new JButton("Voltar");
+		btnVoltar.setBackground(new Color(255, 204, 51));
+		btnVoltar.setFont(new Font("Tahoma", Font.PLAIN, 12));
 		btnVoltar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
@@ -54,6 +59,8 @@ public class Catalogo_Usuario extends JFrame{
 		getContentPane().add(btnVoltar);
 		
 		JButton btnSugestão = new JButton("?");
+		btnSugestão.setBackground(new Color(255, 204, 51));
+		btnSugestão.setFont(new Font("Tahoma", Font.PLAIN, 12));
 		btnSugestão.setToolTipText("Sugerir nova adição de moeda");
 		btnSugestão.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -62,34 +69,42 @@ public class Catalogo_Usuario extends JFrame{
 				Catalogo_Usuario.this.dispose();
 			}
 		});
-		btnSugestão.setBounds(428, 11, 51, 23);
+		btnSugestão.setBounds(273, 481, 134, 23);
 		getContentPane().add(btnSugestão);
-		
-		JLabel lblBorda = new JLabel("Borda");
-		lblBorda.setBounds(57, 114, 46, 14);
-		getContentPane().add(lblBorda);
-		
-		JComboBox comboBox = new JComboBox();
-		comboBox.setBounds(57, 133, 120, 22);
-		getContentPane().add(comboBox);
-		
-		JLabel lblAno = new JLabel("Ano Inicio");
-		lblAno.setBounds(183, 114, 72, 14);
-		getContentPane().add(lblAno);
-		
-		JLabel lblAnoFinal = new JLabel("Ano Final");
-		lblAnoFinal.setBounds(315, 114, 72, 14);
-		getContentPane().add(lblAnoFinal);
-		
-		txtAno = new JTextField();
-		txtAno.setBounds(183, 134, 125, 20);
-		getContentPane().add(txtAno);
-		txtAno.setColumns(10);
 		
 		textField = new JTextField();
 		textField.setColumns(10);
-		textField.setBounds(315, 134, 125, 20);
+		textField.setBounds(57, 137, 362, 20);
 		getContentPane().add(textField);
+		
+		JLabel lblMoedas = new JLabel("Moedas");
+		lblMoedas.setFont(new Font("Sylfaen", Font.PLAIN, 13));
+		lblMoedas.setBounds(10, 134, 51, 32);
+		getContentPane().add(lblMoedas);
+		
+		JButton btnFunil = new JButton("Funil");
+		btnFunil.setBackground(new Color(255, 204, 51));
+		btnFunil.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		btnFunil.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
+		btnFunil.setBounds(425, 136, 31, 23);
+		getContentPane().add(btnFunil);
+		
+		JButton btnItensavenda = new JButton("Itens A Venda");
+		btnItensavenda.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				CatalogoVenda_Usuario CatalogoVenda = new CatalogoVenda_Usuario();
+				Catalogo_Usuario.this.dispose();
+			}
+		});
+		
+		btnItensavenda.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		btnItensavenda.setBackground(new Color(255, 204, 51));
+		btnItensavenda.setBounds(183, 11, 134, 23);
+		getContentPane().add(btnItensavenda);
 	
 		
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

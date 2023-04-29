@@ -1,10 +1,12 @@
 package br.edu.unifacear.testes;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import br.edu.unifacear.bo.ItensAVendaBo;
 import br.edu.unifacear.classes.ItensAVenda;
 import br.edu.unifacear.classes.Colecao;
+import br.edu.unifacear.classes.Continente;
 import br.edu.unifacear.classes.ItensAVenda;
 import br.edu.unifacear.classes.Usuario;
 import br.edu.unifacear.classes.Venda;
@@ -22,6 +24,9 @@ public class ItensAVenda_Teste {
 		Venda venda = new Venda();
 		venda.setId(66);
 		
+		List <ItensAVenda> itensAVenda2 = new ArrayList();
+		itensAVenda2.add(venda);
+		
 		ItensAVenda itensAVenda = new ItensAVenda();
 		
 		itensAVenda.setQuantidade(4);
@@ -30,6 +35,9 @@ public class ItensAVenda_Teste {
 		itensAVenda.setColecionador(colecionador);
 		itensAVenda.setColecao(colecao);
 		itensAVenda.setVenda(venda);
+		
+		venda.setItensAVenda(itensAVenda2);
+	
 		
 		ItensAVendaBo itensAVendaBo = new ItensAVendaBo();
 		try {
@@ -41,7 +49,7 @@ public class ItensAVenda_Teste {
 		
 		try {
 			List <ItensAVenda> lista = itensAVendaBo.consultar("A");
-			for (ItensAVenda itensAVenda2 : lista) {
+			for (ItensAVenda itensAVenda : lista) {
 				System.out.println(">>>" + itensAVenda2);
 			}
 		} catch (Exception e) {

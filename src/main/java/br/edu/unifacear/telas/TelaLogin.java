@@ -27,21 +27,25 @@ public class TelaLogin extends JFrame{
 		setTitle("Coinlector");
 		
 		JPanel jpn = new JPanel();
-		jpn.setBackground(new Color(128, 128, 0));
+		jpn.setBackground(new Color(255, 255, 204));
 		getContentPane().add(jpn, BorderLayout.CENTER);
 		jpn.setLayout(null);
 		
 		JLabel lblTitle = new JLabel("COINLECTOR");
+		lblTitle.setForeground(new Color(255, 204, 51));
+		lblTitle.setBackground(new Color(255, 255, 255));
 		lblTitle.setBounds(118, 64, 219, 59);
 		lblTitle.setFont(new Font("Rockwell Condensed", Font.PLAIN, 50));
 		jpn.add(lblTitle);
 		
 		JLabel lblLogin = new JLabel("Login");
-		lblLogin.setBounds(57, 158, 46, 14);
+		lblLogin.setFont(new Font("Sylfaen", Font.PLAIN, 13));
+		lblLogin.setBounds(57, 153, 46, 30);
 		jpn.add(lblLogin);
 		
 		JLabel lblSenha = new JLabel("Senha");
-		lblSenha.setBounds(57, 205, 46, 14);
+		lblSenha.setFont(new Font("Sylfaen", Font.PLAIN, 13));
+		lblSenha.setBounds(57, 199, 46, 33);
 		jpn.add(lblSenha);
 		
 		txtLogin = new JTextField();
@@ -55,6 +59,8 @@ public class TelaLogin extends JFrame{
 		jpn.add(txtSenha);
 		
 		JButton btnEntrar = new JButton("Entrar");
+		btnEntrar.setBackground(new Color(255, 204, 51));
+		btnEntrar.setFont(new Font("Tahoma", Font.PLAIN, 12));
 		btnEntrar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
@@ -80,6 +86,8 @@ public class TelaLogin extends JFrame{
 		jpn.add(btnEntrar);
 		
 		JButton btnCadastro = new JButton("Cadastre-se");
+		btnCadastro.setBackground(new Color(255, 204, 51));
+		btnCadastro.setFont(new Font("Tahoma", Font.PLAIN, 12));
 		btnCadastro.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
@@ -92,6 +100,8 @@ public class TelaLogin extends JFrame{
 		jpn.add(btnCadastro);
 		
 		JButton btnEsqueciSenha = new JButton("Esqueci a senha");
+		btnEsqueciSenha.setBackground(new Color(255, 204, 51));
+		btnEsqueciSenha.setFont(new Font("Tahoma", Font.PLAIN, 12));
 		btnEsqueciSenha.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 			}
@@ -100,7 +110,8 @@ public class TelaLogin extends JFrame{
 		jpn.add(btnEsqueciSenha);
 		
 		JLabel lblCadastro = new JLabel("Ainda não tem cadastro?");
-		lblCadastro.setBounds(144, 288, 150, 14);
+		lblCadastro.setFont(new Font("Sylfaen", Font.PLAIN, 13));
+		lblCadastro.setBounds(144, 288, 150, 28);
 		jpn.add(lblCadastro);
 		
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

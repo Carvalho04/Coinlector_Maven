@@ -31,36 +31,43 @@ public class Moedas_Adm extends JFrame {
 		private JTextField txtId;
 		public Moedas_Adm() {
 			setTitle("Manter Moeda");
-			getContentPane().setBackground(new Color(128, 128, 0));
+			getContentPane().setBackground(new Color(255, 255, 204));
 			getContentPane().setLayout(null);
 			
 			JLabel lblMoeda = new JLabel("Moeda");
+			lblMoeda.setForeground(new Color(255, 204, 51));
 			lblMoeda.setFont(new Font("Rockwell Condensed", Font.PLAIN, 50));
 			lblMoeda.setBounds(320, 28, 108, 96);
 			getContentPane().add(lblMoeda);
 			
 			JLabel lblNome = new JLabel("Nome");
-			lblNome.setBounds(34, 147, 46, 14);
+			lblNome.setFont(new Font("Sylfaen", Font.PLAIN, 13));
+			lblNome.setBounds(34, 147, 59, 31);
 			getContentPane().add(lblNome);
 			
 			JLabel lblCpf = new JLabel("Cunhagem");
-			lblCpf.setBounds(34, 203, 89, 14);
+			lblCpf.setFont(new Font("Sylfaen", Font.PLAIN, 13));
+			lblCpf.setBounds(34, 203, 89, 31);
 			getContentPane().add(lblCpf);
 			
 			JLabel lblAno_Lanca = new JLabel("Ano de Lançamento");
-			lblAno_Lanca.setBounds(34, 259, 108, 14);
+			lblAno_Lanca.setFont(new Font("Sylfaen", Font.PLAIN, 13));
+			lblAno_Lanca.setBounds(34, 259, 127, 31);
 			getContentPane().add(lblAno_Lanca);
 			
 			JLabel lblPeso = new JLabel("Peso");
-			lblPeso.setBounds(261, 147, 46, 14);
+			lblPeso.setFont(new Font("Sylfaen", Font.PLAIN, 13));
+			lblPeso.setBounds(261, 147, 89, 31);
 			getContentPane().add(lblPeso);
 			
 			JLabel lblDiametro = new JLabel("Diametro");
-			lblDiametro.setBounds(261, 203, 48, 14);
+			lblDiametro.setFont(new Font("Sylfaen", Font.PLAIN, 13));
+			lblDiametro.setBounds(261, 203, 89, 31);
 			getContentPane().add(lblDiametro);
 			
 			JLabel lblEspessura = new JLabel("Espessura");
-			lblEspessura.setBounds(261, 259, 61, 14);
+			lblEspessura.setFont(new Font("Sylfaen", Font.PLAIN, 13));
+			lblEspessura.setBounds(261, 259, 89, 31);
 			getContentPane().add(lblEspessura);
 			
 			txtNome = new JTextField();
@@ -94,14 +101,20 @@ public class Moedas_Adm extends JFrame {
 			txtEspessura.setColumns(10);
 			
 			JButton btnEditar = new JButton("Editar");
+			btnEditar.setBackground(new Color(255, 204, 51));
+			btnEditar.setFont(new Font("Tahoma", Font.PLAIN, 12));
 			btnEditar.setBounds(70, 507, 120, 25);
 			getContentPane().add(btnEditar);
 			
 			JButton btnExcluir = new JButton("Excluir");
+			btnExcluir.setBackground(new Color(255, 204, 51));
+			btnExcluir.setFont(new Font("Tahoma", Font.PLAIN, 12));
 			btnExcluir.setBounds(534, 507, 120, 25);
 			getContentPane().add(btnExcluir);
 			
 			JButton btnVoltar = new JButton("Voltar");
+			btnVoltar.setFont(new Font("Tahoma", Font.PLAIN, 12));
+			btnVoltar.setBackground(new Color(255, 204, 51));
 			btnVoltar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
@@ -119,11 +132,13 @@ public class Moedas_Adm extends JFrame {
 			getContentPane().add(txtFimProd);
 			
 			JLabel lblFimProd = new JLabel("Fim de Produção");
-			lblFimProd.setBounds(34, 315, 89, 14);
+			lblFimProd.setFont(new Font("Sylfaen", Font.PLAIN, 13));
+			lblFimProd.setBounds(34, 315, 113, 31);
 			getContentPane().add(lblFimProd);
 			
 			JLabel lblCircunferencia = new JLabel("Circunferencia");
-			lblCircunferencia.setBounds(261, 315, 120, 14);
+			lblCircunferencia.setFont(new Font("Sylfaen", Font.PLAIN, 13));
+			lblCircunferencia.setBounds(261, 315, 120, 31);
 			getContentPane().add(lblCircunferencia);
 			
 			txtCircunferencia = new JTextField();
@@ -137,11 +152,13 @@ public class Moedas_Adm extends JFrame {
 			getContentPane().add(txtValorFace);
 			
 			JLabel lblValorFace = new JLabel("Valor de Face");
-			lblValorFace.setBounds(34, 376, 89, 14);
+			lblValorFace.setFont(new Font("Sylfaen", Font.PLAIN, 13));
+			lblValorFace.setBounds(34, 376, 89, 25);
 			getContentPane().add(lblValorFace);
 			
 			JLabel lblSituacao = new JLabel("Situação");
-			lblSituacao.setBounds(261, 376, 89, 14);
+			lblSituacao.setFont(new Font("Sylfaen", Font.PLAIN, 13));
+			lblSituacao.setBounds(261, 376, 89, 25);
 			getContentPane().add(lblSituacao);
 			
 			JComboBox comboBox = new JComboBox();
@@ -152,31 +169,40 @@ public class Moedas_Adm extends JFrame {
 			getContentPane().add(comboBox);
 			
 			JButton btnFotos = new JButton("Fotos");
-			btnFotos.setBounds(590, 11, 89, 23);
+			btnFotos.setFont(new Font("Tahoma", Font.PLAIN, 12));
+			btnFotos.setBackground(new Color(255, 204, 51));
+			btnFotos.setBounds(320, 12, 98, 23);
 			getContentPane().add(btnFotos);
 			
 			JButton btnSalvar = new JButton("Salvar");
+			btnSalvar.setFont(new Font("Tahoma", Font.PLAIN, 12));
+			btnSalvar.setBackground(new Color(255, 204, 51));
 			btnSalvar.setBounds(308, 507, 120, 25);
 			getContentPane().add(btnSalvar);
 			
 			JLabel lblPais = new JLabel("Pais");
-			lblPais.setBounds(481, 147, 46, 14);
+			lblPais.setFont(new Font("Sylfaen", Font.PLAIN, 13));
+			lblPais.setBounds(481, 147, 61, 31);
 			getContentPane().add(lblPais);
 			
 			JLabel lblBorda = new JLabel("Borda");
-			lblBorda.setBounds(479, 203, 46, 14);
+			lblBorda.setFont(new Font("Sylfaen", Font.PLAIN, 13));
+			lblBorda.setBounds(479, 203, 83, 31);
 			getContentPane().add(lblBorda);
 			
 			JLabel lblForma = new JLabel("Forma");
-			lblForma.setBounds(479, 259, 46, 14);
+			lblForma.setFont(new Font("Sylfaen", Font.PLAIN, 13));
+			lblForma.setBounds(479, 259, 83, 31);
 			getContentPane().add(lblForma);
 			
 			JLabel lblDistribuicao = new JLabel("Distribuição");
-			lblDistribuicao.setBounds(479, 315, 127, 14);
+			lblDistribuicao.setFont(new Font("Sylfaen", Font.PLAIN, 13));
+			lblDistribuicao.setBounds(479, 315, 127, 31);
 			getContentPane().add(lblDistribuicao);
 			
 			JLabel lblComposicao = new JLabel("Composição");
-			lblComposicao.setBounds(479, 376, 127, 14);
+			lblComposicao.setFont(new Font("Sylfaen", Font.PLAIN, 13));
+			lblComposicao.setBounds(479, 376, 127, 25);
 			getContentPane().add(lblComposicao);
 			
 			txtCod = new JTextField();
@@ -185,7 +211,8 @@ public class Moedas_Adm extends JFrame {
 			getContentPane().add(txtCod);
 			
 			JLabel lblCod = new JLabel("Código de Mercado");
-			lblCod.setBounds(34, 432, 127, 14);
+			lblCod.setFont(new Font("Sylfaen", Font.PLAIN, 13));
+			lblCod.setBounds(34, 432, 127, 25);
 			getContentPane().add(lblCod);
 			
 			txtId = new JTextField();
@@ -195,7 +222,8 @@ public class Moedas_Adm extends JFrame {
 			getContentPane().add(txtId);
 			
 			JLabel lblId = new JLabel("Id");
-			lblId.setBounds(261, 432, 68, 14);
+			lblId.setFont(new Font("Sylfaen", Font.PLAIN, 13));
+			lblId.setBounds(261, 432, 68, 25);
 			getContentPane().add(lblId);
 			
 			JComboBox ComboComposicao = new JComboBox();
@@ -223,7 +251,8 @@ public class Moedas_Adm extends JFrame {
 			getContentPane().add(ComboContinente);
 			
 			JLabel lblContinente = new JLabel("Continente");
-			lblContinente.setBounds(479, 431, 127, 14);
+			lblContinente.setFont(new Font("Sylfaen", Font.PLAIN, 13));
+			lblContinente.setBounds(479, 431, 127, 26);
 			getContentPane().add(lblContinente);
 		
 		
@@ -236,13 +265,13 @@ public class Moedas_Adm extends JFrame {
 			
 
 			final JMenuItem itemContinente = new JMenuItem("Continente");
-			itemContinente.setBackground(Color.LIGHT_GRAY);
+			itemContinente.setBackground(new Color(255, 255, 153));
 			itemContinente.addMouseListener(new MouseAdapter(){
 			public void mouseEntered(MouseEvent e) {
 				itemContinente.setBackground(Color.white);
 			}
 			public void mouseExited (MouseEvent e) {
-				itemContinente.setBackground(Color.LIGHT_GRAY);
+				itemContinente.setBackground(new Color(255, 255, 153));
 			}
 			public void mousePressed(MouseEvent e) {
 				
@@ -253,13 +282,13 @@ public class Moedas_Adm extends JFrame {
 			menuBar.add(itemContinente);
 			
 			final JMenuItem itemBorda = new JMenuItem("Borda");
-			itemBorda.setBackground(Color.LIGHT_GRAY);
+			itemBorda.setBackground(new Color(255, 255, 153));
 			itemBorda.addMouseListener(new MouseAdapter(){
 			public void mouseEntered(MouseEvent e) {
 				itemBorda.setBackground(Color.white);
 			}
 			public void mouseExited (MouseEvent e) {
-				itemBorda.setBackground(Color.LIGHT_GRAY);
+				itemBorda.setBackground(new Color(255, 255, 153));
 			}
 			public void mousePressed(MouseEvent e) {
 				
@@ -270,13 +299,13 @@ public class Moedas_Adm extends JFrame {
 			menuBar.add(itemBorda);
 			
 			final JMenuItem itemDistribuicao = new JMenuItem("Distribuição");
-			itemDistribuicao.setBackground(Color.LIGHT_GRAY);
+			itemDistribuicao.setBackground(new Color(255, 255, 153));
 			itemDistribuicao.addMouseListener(new MouseAdapter(){
 			public void mouseEntered(MouseEvent e) {
 				itemDistribuicao.setBackground(Color.white);
 			}
 			public void mouseExited (MouseEvent e) {
-				itemDistribuicao.setBackground(Color.LIGHT_GRAY);
+				itemDistribuicao.setBackground(new Color(255, 255, 153));
 			}
 			public void mousePressed(MouseEvent e) {
 				
@@ -287,13 +316,13 @@ public class Moedas_Adm extends JFrame {
 			menuBar.add(itemDistribuicao);
 			
 			final JMenuItem itemForma = new JMenuItem("Forma");
-			itemForma.setBackground(Color.LIGHT_GRAY);
+			itemForma.setBackground(new Color(255, 255, 153));
 			itemForma.addMouseListener(new MouseAdapter(){
 			public void mouseEntered(MouseEvent e) {
 				itemForma.setBackground(Color.white);
 			}
 			public void mouseExited (MouseEvent e) {
-				itemForma.setBackground(Color.LIGHT_GRAY);
+				itemForma.setBackground(new Color(255, 255, 153));
 			}
 			public void mousePressed(MouseEvent e) {
 				
@@ -304,13 +333,13 @@ public class Moedas_Adm extends JFrame {
 			menuBar.add(itemForma);
 			
 			final JMenuItem itemComposicao = new JMenuItem("Composição");
-			itemComposicao.setBackground(Color.LIGHT_GRAY);
+			itemComposicao.setBackground(new Color(255, 255, 153));
 			itemComposicao.addMouseListener(new MouseAdapter(){
 			public void mouseEntered(MouseEvent e) {
 				itemComposicao.setBackground(Color.white);
 			}
 			public void mouseExited (MouseEvent e) {
-				itemComposicao.setBackground(Color.LIGHT_GRAY);
+				itemComposicao.setBackground(new Color(255, 255, 153));
 			}
 			public void mousePressed(MouseEvent e) {
 				
@@ -321,13 +350,13 @@ public class Moedas_Adm extends JFrame {
 			menuBar.add(itemComposicao);
 			
 			final JMenuItem itemPais = new JMenuItem("Paises");
-			itemPais.setBackground(Color.LIGHT_GRAY);
+			itemPais.setBackground(new Color(255, 255, 153));
 			itemPais.addMouseListener(new MouseAdapter(){
 			public void mouseEntered(MouseEvent e) {
 				itemPais.setBackground(Color.white);
 			}
 			public void mouseExited (MouseEvent e) {
-				itemPais.setBackground(Color.LIGHT_GRAY);
+				itemPais.setBackground(new Color(255, 255, 153));
 			}
 			public void mousePressed(MouseEvent e) {
 				

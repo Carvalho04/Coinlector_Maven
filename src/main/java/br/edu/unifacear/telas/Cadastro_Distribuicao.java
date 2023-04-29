@@ -20,24 +20,28 @@ public class Cadastro_Distribuicao extends JFrame {
 	private JTextField txtId;
 	public Cadastro_Distribuicao() {
 		setTitle("Manter Distribuicao");
-		getContentPane().setBackground(new Color(128, 128, 0));
+		getContentPane().setBackground(new Color(255, 255, 204));
 		getContentPane().setLayout(null);
 		
 		JLabel lblDistribuicao = new JLabel("Distribuição");
+		lblDistribuicao.setForeground(new Color(255, 204, 51));
 		lblDistribuicao.setFont(new Font("Rockwell Condensed", Font.PLAIN, 50));
-		lblDistribuicao.setBounds(137, 23, 189, 96);
+		lblDistribuicao.setBounds(90, 48, 189, 96);
 		getContentPane().add(lblDistribuicao);
 		
 		JLabel lblNome = new JLabel("Nome");
-		lblNome.setBounds(20, 130, 46, 14);
+		lblNome.setFont(new Font("Sylfaen", Font.PLAIN, 13));
+		lblNome.setBounds(20, 130, 46, 25);
 		getContentPane().add(lblNome);
 		
 		txtNome = new JTextField();
-		txtNome.setBounds(20, 155, 365, 20);
+		txtNome.setBounds(20, 155, 334, 20);
 		getContentPane().add(txtNome);
 		txtNome.setColumns(10);
 		
 		JButton btnVoltar = new JButton("Voltar");
+		btnVoltar.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		btnVoltar.setBackground(new Color(255, 204, 51));
 		btnVoltar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
@@ -50,6 +54,8 @@ public class Cadastro_Distribuicao extends JFrame {
 		getContentPane().add(btnVoltar);
 		
 		JButton btnSalvar = new JButton("Salvar");
+		btnSalvar.setBackground(new Color(255, 204, 51));
+		btnSalvar.setFont(new Font("Tahoma", Font.PLAIN, 12));
 		btnSalvar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
@@ -67,30 +73,35 @@ public class Cadastro_Distribuicao extends JFrame {
 			
 			}
 		});
-		btnSalvar.setBounds(196, 217, 83, 25);
+		btnSalvar.setBounds(97, 275, 159, 25);
 		getContentPane().add(btnSalvar);
 		
 		JButton btnEditar = new JButton("Editar");
-		btnEditar.setBounds(20, 217, 83, 25);
+		btnEditar.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		btnEditar.setBackground(new Color(255, 204, 51));
+		btnEditar.setBounds(137, 205, 90, 25);
 		getContentPane().add(btnEditar);
 		
 		JButton btnExcluir = new JButton("Excluir");
-		btnExcluir.setBounds(361, 218, 83, 25);
+		btnExcluir.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		btnExcluir.setBackground(new Color(255, 204, 51));
+		btnExcluir.setBounds(264, 205, 90, 25);
 		getContentPane().add(btnExcluir);
 		
 		txtId = new JTextField();
 		txtId.setEditable(false);
 		txtId.setColumns(10);
-		txtId.setBounds(413, 155, 41, 20);
+		txtId.setBounds(20, 207, 90, 20);
 		getContentPane().add(txtId);
 		
 		JLabel lblId = new JLabel("Id");
-		lblId.setBounds(413, 130, 46, 14);
+		lblId.setFont(new Font("Sylfaen", Font.PLAIN, 13));
+		lblId.setBounds(20, 182, 46, 25);
 		getContentPane().add(lblId);
 	
 	
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		this.setSize(480, 310);
+		this.setSize(380, 390);
 		this.setResizable(false);
 		
 		

@@ -16,10 +16,11 @@ public class Compras_Usuario extends JFrame {
 	private JTable table;
 	public Compras_Usuario() {
 		setTitle("Minhas Compras");
-		getContentPane().setBackground(new Color(128, 128, 0));
+		getContentPane().setBackground(new Color(255, 255, 204));
 		getContentPane().setLayout(null);
 		
 		JLabel lblMinhasCompras = new JLabel("Minhas Compras");
+		lblMinhasCompras.setForeground(new Color(255, 204, 51));
 		lblMinhasCompras.setFont(new Font("Rockwell Condensed", Font.PLAIN, 50));
 		lblMinhasCompras.setBounds(116, 11, 264, 99);
 		getContentPane().add(lblMinhasCompras);
@@ -30,11 +31,14 @@ public class Compras_Usuario extends JFrame {
 		txtCompras.setColumns(10);
 		
 		JButton btnPesquisar = new JButton("Pesquisar");
+		btnPesquisar.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		btnPesquisar.setBackground(new Color(255, 204, 51));
 		btnPesquisar.setBounds(379, 110, 100, 23);
 		getContentPane().add(btnPesquisar);
 		
 		JLabel lblCompras = new JLabel("Compras");
-		lblCompras.setBounds(10, 114, 51, 14);
+		lblCompras.setFont(new Font("Sylfaen", Font.PLAIN, 13));
+		lblCompras.setBounds(10, 99, 75, 50);
 		getContentPane().add(lblCompras);
 		
 		table = new JTable();
@@ -42,6 +46,8 @@ public class Compras_Usuario extends JFrame {
 		getContentPane().add(table);
 		
 		JButton btnVoltar = new JButton("Voltar");
+		btnVoltar.setBackground(new Color(255, 204, 51));
+		btnVoltar.setFont(new Font("Tahoma", Font.PLAIN, 12));
 		btnVoltar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
@@ -54,6 +60,8 @@ public class Compras_Usuario extends JFrame {
 		getContentPane().add(btnVoltar);
 		
 		JButton btnCatalogo = new JButton("Catálogo");
+		btnCatalogo.setBackground(new Color(255, 204, 51));
+		btnCatalogo.setFont(new Font("Tahoma", Font.PLAIN, 12));
 		btnCatalogo.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
@@ -62,7 +70,7 @@ public class Compras_Usuario extends JFrame {
 				
 			}
 		});
-		btnCatalogo.setBounds(390, 11, 89, 23);
+		btnCatalogo.setBounds(196, 11, 89, 23);
 		getContentPane().add(btnCatalogo);
 	
 		
