@@ -18,8 +18,18 @@ public class Venda implements EntityBase{
 	@OneToOne
 	private Usuario usuarioVendedor;
 	
+	@OneToMany (cascade = CascadeType.ALL, mappedBy = "venda")
+	@JoinColumn(name = "id_Venda")
+	private List<ItensAVenda> itensAVenda;
+	
 	//Properties
 	
+	public List<ItensAVenda> getItensAVenda() {
+		return itensAVenda;
+	}
+	public void setItensAVenda(List<ItensAVenda> itensAVenda) {
+		this.itensAVenda = itensAVenda;
+	}
 	public int getId() {
 		return id;
 	}

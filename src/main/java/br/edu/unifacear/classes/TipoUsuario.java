@@ -1,5 +1,6 @@
 package br.edu.unifacear.classes;
 
+import java.util.List;
 import java.util.Objects;
 import javax.persistence.*;
 
@@ -12,12 +13,19 @@ public class TipoUsuario implements EntityBase{
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int id;
 	private String tipo;
-//	@OneToOne (cascade = CascadeType.ALL)
-//	private Usuario usuario;
+	@OneToMany (cascade = CascadeType.ALL, mappedBy = "tipoUsuario")
+	@JoinColumn (name = "id_TpUsuario")
+	private List <Usuario> usuarios;
 
 	
 	//Properties
 	
+	public List<Usuario> getUsuarios() {
+		return usuarios;
+	}
+	public void setUsuarios(List<Usuario> usuarios) {
+		this.usuarios = usuarios;
+	}
 	public int getId() {
 	return id;
 	}

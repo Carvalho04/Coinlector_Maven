@@ -5,6 +5,9 @@ import java.util.Objects;
 import javax.persistence.*;
 
 @Entity
+//@SequenceGenerator(name = "usuario_seq", sequenceName = "usuario_seq", 
+//initialValue = 1, allocationSize = 1)
+
 public class Usuario implements EntityBase{
 
 	//Attributes
@@ -18,7 +21,7 @@ public class Usuario implements EntityBase{
 	private String login;
 	private String senha;
 	
-	@OneToOne (cascade = CascadeType.ALL)
+	@ManyToOne 
 	private TipoUsuario tipoUsuario;
 	
 	

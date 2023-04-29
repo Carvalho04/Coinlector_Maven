@@ -48,21 +48,21 @@ public class ItensAVenda implements EntityBase{
 	public void setTotal(double total) {
 		this.total = total;
 	}
-	@JoinColumn(name = "codigo_Usuario")
+	@JoinColumn(name = "id_Usuario")
 	public Usuario getColecionador() {
 		return colecionador;
 	}
 	public void setColecionador(Usuario colecionador) {
 		this.colecionador = colecionador;
 	}
-	@JoinColumn(name = "codigo_Colecao")
+	@JoinColumn(name = "id_Colecao")
 	public Colecao getColecao() {
 		return colecao;
 	}
 	public void setColecao(Colecao colecao) {
 		this.colecao = colecao;
 	}
-	@JoinColumn(name = "codigo_Venda")
+	@JoinColumn(name = "id_Venda")
 	public Venda getVenda() {
 		return venda;
 	}

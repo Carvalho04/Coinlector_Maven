@@ -1,5 +1,6 @@
 package br.edu.unifacear.classes;
 
+import java.util.List;
 import java.util.Objects;
 import javax.persistence.*;
 
@@ -12,13 +13,26 @@ public class Pais implements EntityBase{
 	private int id;
 	
 	private String nome;
-	@ManyToOne
+	@ManyToOne 
 	private Continente continente;
+	
+	@OneToMany (cascade = CascadeType.ALL, mappedBy = "pais")
+	@JoinColumn (name = "id_Pais")
+	private List <Moeda> moedas;
+	
+	//Properties
+	
+	public List<Moeda> getMoedas() {
+		return moedas;
+	}
+
+	public void setMoedas(List<Moeda> moedas) {
+		this.moedas = moedas;
+	}
+
 	public int getId() {
 		return id;
 	}
-
-	//Properties
 	
 	public void setId(int id) {
 		this.id = id;
@@ -29,7 +43,7 @@ public class Pais implements EntityBase{
 	public void setNome(String nome) {
 		this.nome = nome;
 	}
-	@JoinColumn(name = "codigo_Continente")
+	@JoinColumn(name = "id_Continente")
 	public Continente getContinente() {
 		return continente;
 	}
@@ -73,7 +87,7 @@ public class Pais implements EntityBase{
 
 	@Override
 	public String toString() {
-		return "Pais [id=" + id + ", nome=" + nome + ", continente=" + continente + "]";
+		return "Pais [id=" + id + ", nome=" + nome + ", continente=" + continente.getId() + "]";
 	}
 	
 	

@@ -16,7 +16,7 @@ public class Continente implements EntityBase{
 		private String descricao;
 		
 		@OneToMany (cascade = CascadeType.ALL, mappedBy = "continente")
-		@JoinColumn(name = "codigo_Continente")
+		@JoinColumn(name = "id_Continente")
 		private List<Pais> paises;
 		
 		//Properties

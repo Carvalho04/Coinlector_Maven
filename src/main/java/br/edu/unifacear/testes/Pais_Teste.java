@@ -15,7 +15,7 @@ public class Pais_Teste {
 		Continente continente = new Continente();
 		continente.setDescricao("América Latina");
 		
-		List <Continente> paises = new ArrayList();
+		List <Pais> paises = new ArrayList();
 		paises.add(continente);
 		
 		
@@ -23,6 +23,8 @@ public class Pais_Teste {
 		
 		pais.setNome("Brasil");
 		pais.setContinente(continente);
+		
+		continente.setPaises(paises);
 
 		PaisBo paisBo = new PaisBo();
 		try {

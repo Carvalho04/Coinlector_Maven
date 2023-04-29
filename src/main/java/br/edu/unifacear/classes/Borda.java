@@ -1,5 +1,6 @@
 package br.edu.unifacear.classes;
 
+import java.util.List;
 import java.util.Objects;
 
 import javax.persistence.*;
@@ -23,8 +24,19 @@ public class Borda implements EntityBase{
 	//@Column(name = "nome_borda")  // nome da coluna no BD
 	private String descricao;
 	
+	@OneToMany (cascade = CascadeType.ALL, mappedBy = "borda")
+	@JoinColumn (name = "id_Borda")
+	private List <Moeda> moedas;
 	
 	//Properties
+	
+	public List<Moeda> getMoedas() {
+		return moedas;
+	}
+
+	public void setMoedas(List<Moeda> moedas) {
+		this.moedas = moedas;
+	}
 	
 	public int getId() {
 		return id;

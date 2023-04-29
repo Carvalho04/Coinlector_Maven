@@ -1,5 +1,6 @@
 package br.edu.unifacear.classes;
 
+import java.util.List;
 import java.util.Objects;
 import javax.persistence.*;
 
@@ -13,8 +14,19 @@ public class Distribuicao implements EntityBase{
 	
 	private String descricao;
 	
+	@OneToMany (cascade = CascadeType.ALL, mappedBy = "distribuicao")
+	@JoinColumn (name = "id_Distribuicao")
+	private List <Moeda> moedas;
 	
 	//Properties
+	
+	public List<Moeda> getMoedas() {
+		return moedas;
+	}
+
+	public void setMoedas(List<Moeda> moedas) {
+		this.moedas = moedas;
+	}
 	
 	public int getId() {
 		return id;

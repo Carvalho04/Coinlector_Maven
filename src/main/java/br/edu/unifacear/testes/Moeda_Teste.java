@@ -1,5 +1,6 @@
 package br.edu.unifacear.testes;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import br.edu.unifacear.bo.MoedaBo;
@@ -9,6 +10,7 @@ import br.edu.unifacear.classes.Distribuicao;
 import br.edu.unifacear.classes.Forma;
 import br.edu.unifacear.classes.Moeda;
 import br.edu.unifacear.classes.Pais;
+import br.edu.unifacear.classes.Usuario;
 import br.edu.unifacear.classes.Moeda;
 
 public class Moeda_Teste {
@@ -16,19 +18,27 @@ public class Moeda_Teste {
 	public static void main (String []args) {
 		
 		Forma forma = new Forma();
-		forma.setId(7);
+		forma.setDescricao("Oval");
 		
 		Distribuicao distribuicao = new Distribuicao();
-		distribuicao.setId(8);
+		distribuicao.setDescricao("Casa da Moeda");
 		
 		Composicao composicao = new Composicao();
-		composicao.setId(9);
+		composicao.setDescricao("Ouro");
 		
 		Borda borda = new Borda();
-		borda.setId(6);
+		borda.setDescricao("Serrilhada");
 		
 		Pais pais = new Pais();
-		pais.setId(5);
+		pais.setNome("França");
+		
+		List<Moeda> moedas = new ArrayList();
+		moedas.add(forma);
+		moedas.add(distribuicao);
+		moedas.add(composicao);
+		moedas.add(borda);
+		moedas.add(pais);
+		
 		
 		Moeda moeda = new Moeda();
 		
@@ -44,7 +54,13 @@ public class Moeda_Teste {
 		moeda.setComposicao(composicao);
 		moeda.setBorda(borda);
 		moeda.setPais(pais);
-	
+		
+		pais.setMoedas(moedas);
+		borda.setMoedas(moedas);
+		composicao.setMoedas(moedas);
+		distribuicao.setMoedas(moedas);
+		forma.setMoedas(moedas);
+		
 	MoedaBo moedaBo = new MoedaBo();
 	try {
 		moedaBo.salvar(moeda);

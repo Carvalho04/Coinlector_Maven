@@ -1,5 +1,6 @@
 package br.edu.unifacear.testes;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import br.edu.unifacear.bo.UsuarioBo;
@@ -12,8 +13,11 @@ public class Usuario_Teste {
 public static void main(String []args) {
 		
 		TipoUsuario tipoUsuario = new TipoUsuario();
-		tipoUsuario.setId(5);
+		tipoUsuario.setTipo("Adm");
 	
+		List<Usuario> usuarios = new ArrayList();
+		usuarios.add(tipoUsuario);
+		
 		Usuario usuario = new Usuario();
 
 		usuario.setNome("Amanda");
@@ -22,6 +26,8 @@ public static void main(String []args) {
 		usuario.setLogin("Amanda");
 		usuario.setSenha("Amanda0909");
 		usuario.setTipoUsuario(tipoUsuario);
+		
+		tipoUsuario.setUsuarios(usuarios);
 		
 		UsuarioBo usuarioBo = new UsuarioBo();
 		try {

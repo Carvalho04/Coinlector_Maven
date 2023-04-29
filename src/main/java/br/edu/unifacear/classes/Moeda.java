@@ -20,15 +20,15 @@ public class Moeda implements EntityBase{
 	private double espessura;
 	private double valor_face;
 	private int ano;
-	@OneToOne
+	@ManyToOne 
 	private Forma forma;
-	@OneToOne
+	@ManyToOne 
 	private Distribuicao distribuicao;
-	@OneToOne
+	@ManyToOne 
 	private Composicao composicao;
-	@OneToOne
+	@ManyToOne 
 	private Borda borda;
-	@OneToOne
+	@ManyToOne 
 	private Pais pais;
 	
 	
@@ -88,35 +88,35 @@ public class Moeda implements EntityBase{
 	public void setAno(int ano) {
 		this.ano = ano;
 	}
-	@JoinColumn(name = "codigo_Forma")
+	@JoinColumn(name = "id_Forma")
 	public Forma getForma() {
 		return forma;
 	}
 	public void setForma(Forma forma) {
 		this.forma = forma;
 	}
-	@JoinColumn(name = "codigo_Distribuicao")
+	@JoinColumn(name = "id_Distribuicao")
 	public Distribuicao getDistribuicao() {
 		return distribuicao;
 	}
 	public void setDistribuicao(Distribuicao distribuicao) {
 		this.distribuicao = distribuicao;
 	}
-	@JoinColumn(name = "codigo_Composicao")
+	@JoinColumn(name = "id_Composicao")
 	public Composicao getComposicao() {
 		return composicao;
 	}
 	public void setComposicao(Composicao composicao) {
 		this.composicao = composicao;
 	}
-	@JoinColumn(name = "codigo_Borda")
+	@JoinColumn(name = "id_Borda")
 	public Borda get() {
 		return borda;
 	}
 	public void setBorda(Borda borda) {
 		this.borda = borda;
 	}
-	@JoinColumn(name = "codigo_Pais")
+	@JoinColumn(name = "id_Pais")
 	public Pais getPais() {
 		return pais;
 	}
